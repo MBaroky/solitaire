@@ -16,6 +16,9 @@ export default {
       fontFamily: {
         gerbil: ["var(--font-gerbil)"],
       },
+      maxWidth: {
+        container: "960px",
+      },
     },
   },
   plugins: [require("tailwindcss-animate")],
