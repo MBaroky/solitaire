@@ -10,8 +10,13 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        dark: "var(--dark-bg)",
+        gold: "var(--gold-bg)",
+      },
+      fontFamily: {
+        gerbil: ["var(--font-gerbil)"],
       },
     },
   },
-  plugins: [],
+  plugins: [require("tailwindcss-animate")],
 };

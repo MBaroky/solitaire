@@ -5,19 +5,22 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --dark-bg: #1b3942;
+  --gold-bg: #94792f;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
-    --dark-bg: #1B3942;
-    --gold-bg: #94792F
   }
 }
 
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+}
+
+.bg-temp-dark {
+  background-color: var(--dark-bg);
 }
