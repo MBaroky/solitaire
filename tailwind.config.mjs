@@ -19,6 +19,10 @@ export default {
       maxWidth: {
         container: "960px",
       },
+      fontSize: {
+        "heading-1": "4vw",
+        "heading-2": "3vw",
+      },
     },
   },
   plugins: [require("tailwindcss-animate")],

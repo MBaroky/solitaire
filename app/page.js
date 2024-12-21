@@ -4,6 +4,7 @@ import Logo from "@/assets/logoWhite.svg";
 import { Roboto } from "next/font/google";
 import localFont from "next/font/local";
 import Hero from "./sections/Hero";
+import Who from "./sections/Who";
 const gerbil = localFont({
   src: "./assets/fonts/gerbil.otf",
   variable: "--font-gerbil",
@@ -17,6 +18,7 @@ export default function Home() {
       <main className='flex flex-col gap-8 row-start-2 items-center sm:items-start'></main>
       <Header data={{ Logo }} />
       <Hero />
+      <Who />
       <footer className=''></footer>
     </div>
   );

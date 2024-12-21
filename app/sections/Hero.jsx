@@ -18,7 +18,7 @@ function Hero() {
           backgroundImage: `url(${heroBgBottom.src})`,
         }}>
         <div className=' -mt-[8vw] max-w-container flex flex-col md:items-end'>
-          <h1 className='text-[4vw] font-gerbil text-white w-full'>
+          <h1 className='md:text-heading-1 font-gerbil text-white w-full'>
             Welcome to Solitaire <br /> Real Estate
           </h1>
           <div className='md:w-[50%] md:-mt-14 text-white flex flex-col items-start gap-10'>

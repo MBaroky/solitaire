@@ -17,10 +17,8 @@ function Header({ data }) {
     fetch("/api/pages")
       .then(res => res.json())
       .then(data => {
-        console.log("data", data.message);
         setPages(data);
         setLoading(false);
-        console.log(data);
       });
   }, []);
 
