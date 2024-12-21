@@ -7,6 +7,7 @@ import Burger from "./Burger";
 function Header({ data }) {
   const [pages, setPages] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
+
   const handleClick = () => {
     setIsOpen(!isOpen);
   };
@@ -33,7 +34,9 @@ function Header({ data }) {
         </Link>
       </div>
       <nav className=''>
-        <Burger isOpen={isOpen} handleClick={handleClick} />
+        <div className='relative z-20 bg-dark'>
+          <Burger isOpen={isOpen} handleClick={handleClick} />
+        </div>
         {isOpen && (
           <ul className='animate-in slide-in-from-top absolute right-0 top-full min-w-[350px] bg-dark p-8 text-white'>
             {isLoading
