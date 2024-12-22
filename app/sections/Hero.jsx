@@ -2,6 +2,7 @@ import React from "react";
 import heroBg from "@/assets/images/hero-bg.jpg";
 import heroBgBottom from "@/assets/images/hero-bg-bottom.svg";
 import { MoveUpRight } from "lucide-react";
+import CustomButton from "@/components/CustomButton";
 
 function Hero() {
   return (
@@ -33,12 +34,7 @@ function Hero() {
               excellence, we strive to offer tailored solutions that
               meet your unique needs.
             </p>
-            <button
-              className='w-40 h-40 text-white
-           flex items-center justify-center gap-3 rounded-full bg-gold'>
-              Read More
-              <MoveUpRight />
-            </button>
+            <CustomButton url={"/"} />
           </div>
         </div>
       </div>

@@ -12,12 +12,10 @@ function Who() {
       .then(res => res.json())
       .then(data => {
         setCounters(data);
-        setLoading(false);
-        console.log(data);
       });
   }, []);
   return (
-    <div className='w-full py-20'>
+    <div className='w-full py-20' id='who'>
       <div className='max-w-container mx-auto'>
         <h2 className='text-heading-1 font-gerbil mb-10'>
           Who We Are

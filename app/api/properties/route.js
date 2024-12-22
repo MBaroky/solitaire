@@ -1,6 +1,7 @@
 const endpoint = [
   {
-    image: "",
+    id: 1,
+    image: "feat1.0f6dac232cb259fd073a.png",
     address: "Dubsi, UAE",
     price: "400",
     offer: "",
