@@ -7,7 +7,7 @@ function Know() {
     <div className='w-full py-20 bg-background relative' id='know'>
       {/* background */}
       <div
-        className='absolute bg-center bg-cover opacity-10 w-full h-full left-0 top-0 z-0'
+        className='absolute bg-center bg-cover opacity-10 w-full h-full left-0 top-0 z-0 blur-md'
         style={{
           backgroundImage: `url(${Agent.src})`,
         }}></div>

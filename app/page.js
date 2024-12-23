@@ -8,6 +8,7 @@ import Who from "./sections/Who";
 import Featured from "./sections/Featured";
 import Know from "./sections/Know";
 import Services from "./sections/Services";
+import Why from "./sections/Why";
 const gerbil = localFont({
   src: "./assets/fonts/gerbil.otf",
   variable: "--font-gerbil",
@@ -25,6 +26,7 @@ export default function Home() {
       <Featured />
       <Know />
       <Services />
+      <Why />
       <footer className=''></footer>
     </div>
   );

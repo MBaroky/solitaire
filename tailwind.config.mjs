@@ -17,7 +17,7 @@ export default {
         gerbil: ["var(--font-gerbil)"],
       },
       maxWidth: {
-        container: "960px",
+        container: "1080px",
       },
       fontSize: {
         "heading-1": "4vw",
