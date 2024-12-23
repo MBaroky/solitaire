@@ -8,11 +8,15 @@ function Who() {
   const [counters, setCounters] = useState([]);
 
   useEffect(() => {
-    fetch("/api/counters")
+    //create the abort controller
+    let controller = new AbortController();
+    fetch("/api/counters", { signal: controller.signal })
       .then(res => res.json())
       .then(data => {
         setCounters(data);
       });
+    //abort the request when the component umounts
+    return () => controller?.abort();
   }, []);
   return (
     <div className='w-full py-20' id='who'>

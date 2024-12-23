@@ -15,13 +15,15 @@ import { ArrowLeft, ArrowRight } from "lucide-react";
 function Featured() {
   const [propsList, setPropsList] = useState([]);
   useEffect(() => {
-    fetch("/api/properties")
+    //create the abort controller
+    let controller = new AbortController();
+    fetch("/api/properties", { signal: controller.signal })
       .then(res => res.json())
       .then(data => {
         setPropsList(data.filter(prop => prop.featured === true));
       });
-
-    return () => {};
+    //abort the request when the component umounts
+    return () => controller?.abort();
   }, []);
 
   return (

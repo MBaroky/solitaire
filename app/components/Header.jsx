@@ -14,12 +14,16 @@ function Header({ data }) {
   const [isLoading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("/api/pages")
+    //create the abort controller
+    let controller = new AbortController();
+    fetch("/api/pages", { signal: controller.signal })
       .then(res => res.json())
       .then(data => {
         setPages(data);
         setLoading(false);
       });
+    //abort the request when the component umounts
+    return () => controller?.abort();
   }, []);
 
   return (
