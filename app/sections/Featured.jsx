@@ -53,7 +53,7 @@ function Featured() {
                   <img
                     className='aspect-square object-cover w-full'
                     src={`/images/properties/${prop.image}`}
-                    alt=''
+                    alt={prop.title}
                   />
                 </SwiperSlide>
               ))}

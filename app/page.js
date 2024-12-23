@@ -6,6 +6,7 @@ import localFont from "next/font/local";
 import Hero from "./sections/Hero";
 import Who from "./sections/Who";
 import Featured from "./sections/Featured";
+import Know from "./sections/Know";
 const gerbil = localFont({
   src: "./assets/fonts/gerbil.otf",
   variable: "--font-gerbil",
@@ -21,6 +22,7 @@ export default function Home() {
       <Hero />
       <Who />
       <Featured />
+      <Know />
       <footer className=''></footer>
     </div>
   );

@@ -17,7 +17,7 @@ function Who() {
   return (
     <div className='w-full py-20' id='who'>
       <div className='max-w-container mx-auto'>
-        <h2 className='text-heading-1 font-gerbil mb-10'>
+        <h2 className='text-heading-1 text-dark font-gerbil mb-10'>
           Who We Are
         </h2>
         <p>
@@ -32,15 +32,13 @@ function Who() {
       </div>
       <div
         ref={counterRef}
-        className='max-w-container mx-auto flex flex-col md:flex-row items-center md:justify-between gap-3 my-8'>
+        className='max-w-container mx-auto grid grid-cols-1 md:grid-cols-4 my-8'>
         {counters
           ? counters.map((counter, i) => (
-              <div
-                key={i}
-                className='font-gerbil text-gold text-center'>
+              <div key={i} className=' text-gold text-center'>
                 {counterIsVisible && (
                   <CountUp
-                    className='md:text-heading-2 text-2xl mb-3'
+                    className='font-gerbil md:text-heading-2 text-2xl mb-3'
                     end={parseInt(counter.number)}
                     suffix={counter.number.replace(
                       parseInt(counter.number),

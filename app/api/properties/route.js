@@ -31,7 +31,7 @@ const endpoint = [
     address: "Dubsi, UAE",
     price: "400",
     offer: "",
-    title: "",
+    title: "Serenity Waters Luxury Villa",
     desc: "",
     featured: true,
     size: "villa",
