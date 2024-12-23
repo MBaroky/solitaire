@@ -34,7 +34,7 @@ function Hero() {
               excellence, we strive to offer tailored solutions that
               meet your unique needs.
             </p>
-            <CustomButton url={"/"} />
+            <CustomButton url={"/"} text={"Read More"} />
           </div>
         </div>
       </div>
