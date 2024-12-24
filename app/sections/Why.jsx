@@ -28,14 +28,35 @@ function Why() {
     },
   ];
   return (
-    <div className='w-full bg-background p-16'>
-      <div className='max-w-container mx-auto'>
+    <div className='w-full bg-background py-16'>
+      <div className='max-w-container w-full mx-auto'>
         <h2 className='text-heading-1 text-dark font-gerbil'>
           Why Choose Us
         </h2>
-        <p className='text-dark text-2xl'>
+        <p className='text-dark text-2xl mb-8'>
           At Solitaire Real Estate, we take pride in:
         </p>
+        <div className='services grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12'>
+          {content?.map((column, i) => (
+            <div
+              key={i}
+              className='p-8 border bg-cover bg-center hover:!bg-none  hover:border-gold  text-white hover:text-gold flex flex-col gap-32 justify-between relative group'
+              style={{
+                backgroundImage: `url(${column.img.src})`,
+              }}>
+              <span
+                className='absolute w-full h-full z-0 left-0 top-0 group-hover:hidden'
+                style={{
+                  backgroundImage:
+                    "linear-gradient(180deg, rgba(27, 57, 66, 0.45) 0%, rgba(27, 57, 66, 0) 50%, rgba(27, 57, 66, 0.45) 100%);",
+                }}></span>
+              <p className='z-1 relative'>{column.text}</p>
+              <h2 className='z-1 relative font-gerbil text-heading-1'>
+                {column.id}
+              </h2>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
