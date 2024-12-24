@@ -7,6 +7,7 @@ import Featured from "./sections/Featured";
 import Know from "./sections/Know";
 import Services from "./sections/Services";
 import Why from "./sections/Why";
+import SuccessStories from "./sections/SuccessStories";
 
 export default function Home() {
   return (
@@ -20,6 +21,7 @@ export default function Home() {
       <Know />
       <Services />
       <Why />
+      <SuccessStories />
       <footer className=''></footer>
     </div>
   );

@@ -1,5 +1,6 @@
 import React from "react";
 
+import why1 from "@/assets/images/why-1.webp";
 import why2 from "@/assets/images/why-2.jpg";
 import why3 from "@/assets/images/why-3.jpg";
 import why4 from "@/assets/images/why-4.jpg";
@@ -9,7 +10,7 @@ function Why() {
     {
       id: "01",
       text: "Expert Guidance: Our team of seasoned professionals offers deep insights into the real estate market.",
-      img: why2,
+      img: why1,
     },
     {
       id: "02",

@@ -10,7 +10,7 @@ function Services() {
       .then(data => {
         setServices(data);
       });
-    return () => controller?.abort;
+    return () => controller?.abort();
   }, []);
   return (
     <div className='w-full bg-dark py-16 px-5'>
