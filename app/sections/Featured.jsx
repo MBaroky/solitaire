@@ -61,9 +61,9 @@ function Featured() {
               ))}
           </Swiper>
           <div className='max-w-container w-full mx-auto relative'>
-            <div className='custom-nav brightness-0 absolute top-0 left-0  invert mt-10 w-40 flex flex-row gap-5 justify-start z-50 '>
-              <ArrowRight className='swiper-button-next min-h-12 min-w-12 p-3 rounded-full border border-white'></ArrowRight>
-              <ArrowLeft className='swiper-button-prev min-h-12 min-w-12 p-3 rounded-full border border-white'></ArrowLeft>
+            <div className='custom-nav brightness-0 absolute top-0 left-0  invert mt-10 w-44 flex flex-row gap-5 justify-start z-50 '>
+              <ArrowRight className='swiper-button-next min-h-16 min-w-16 p-3 rounded-full border border-white'></ArrowRight>
+              <ArrowLeft className='swiper-button-prev min-h-16 min-w-16 p-3 rounded-full border border-white'></ArrowLeft>
             </div>
           </div>
           <h2 className='text-heading-1 w-full absolute left-0 top-[50%] translate-y-[-50%] text-white font-gerbil z-30 text-center drop-shadow-lg pointer-events-none'>

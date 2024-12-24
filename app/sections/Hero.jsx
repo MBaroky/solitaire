@@ -1,7 +1,6 @@
 import React from "react";
 import heroBg from "@/assets/images/hero-bg.jpg";
 import heroBgBottom from "@/assets/images/hero-bg-bottom.svg";
-import { MoveUpRight } from "lucide-react";
 import CustomButton from "@/components/CustomButton";
 
 function Hero() {
@@ -9,17 +8,17 @@ function Hero() {
     <div className='w-full bg-dark pb-20' id='hero'>
       {/* {//top secction with image //} */}
       <div
-        className='hero-bg bg-cover min-h-[30vw]'
+        className='hero-bg bg-cover min-h-[30vw] before:bg-gradient-to-t before:from-dark before:to-transparent before:h-10 before:w-full before:absolute before:bottom-0 before:left-0 relative'
         style={{
           backgroundImage: `url(${heroBg.src})`,
         }}></div>
       <div
-        className=' hero-content flex justify-center bg-dark px-8 py-8 bg-bottom bg-contain bg-no-repeat'
+        className=' hero-content relative z-10 flex justify-center bg-dark px-8 py-8 bg-bottom bg-contain bg-no-repeat'
         style={{
           backgroundImage: `url(${heroBgBottom.src})`,
         }}>
         <div className=' -mt-[8vw] max-w-container flex flex-col md:items-end'>
-          <h1 className='md:text-heading-1 font-gerbil text-white w-full'>
+          <h1 className='md:text-[5vw] font-gerbil text-white w-full'>
             Welcome to Solitaire <br /> Real Estate
           </h1>
           <div className='md:w-[50%] md:-mt-14 text-white flex flex-col items-start gap-10'>

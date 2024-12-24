@@ -1,15 +1,13 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import { Roboto } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
+const gerbil = localFont({
+  src: "./assets/fonts/gerbil.otf",
+  variable: "--font-gerbil",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+const roboto = Roboto({ subsets: ["latin"], weight: ["400"] });
 
 export const metadata = {
   title: "Solitaire Crest",
@@ -20,7 +18,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang='en'>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        className={`${gerbil.variable} ${roboto.className} antialiased`}>
         {children}
       </body>
     </html>
