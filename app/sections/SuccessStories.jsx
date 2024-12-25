@@ -56,7 +56,7 @@ function SuccessStories() {
                 <img
                   src={`/images/testimonials/${testimonial.building}`}
                   alt='testimonial.building'
-                  className='aspect-video object-cover'
+                  className='aspect-video block object-cover w-full'
                 />
                 <div
                   className='max-w-container w-full mx-auto relative bg-contain bg-no-repeat bg-center px-5 flex flex-col justify-between'
@@ -82,7 +82,7 @@ function SuccessStories() {
           ))}
         </Swiper>
 
-        <div className='custom-nav brightness-0 translate-y-[-50%] invert w-44 flex flex-row gap-5 justify-start z-50 '>
+        <div className='custom-nav brightness-0 translate-y-[-100%] invert w-44 flex flex-row gap-5 justify-start z-50 md:ml-[51vw] md:-mt-16 md:mb-16 mt-8'>
           <ArrowRight className='swiper-button-next min-h-16 min-w-16 p-3 rounded-full border border-white'></ArrowRight>
           <ArrowLeft className='swiper-button-prev min-h-16 min-w-16 p-3 rounded-full border border-white'></ArrowLeft>
         </div>
