@@ -1,5 +1,6 @@
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import React, { useEffect, useState } from "react";
+import sectionBg from "@/assets/images/success-bg.png";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay } from "swiper/modules";
@@ -21,12 +22,12 @@ function SuccessStories() {
     return () => controller?.abort();
   }, []);
   return (
-    <div className='bg-gold w-full p-20'>
+    <div className='bg-gold w-full py-20'>
       <div className='w-full max-w-container mx-auto'>
         <h2 className='text-heading-1 font-gerbil text-white'>
           Clients Success Stories
         </h2>
-        <p className='md:max-w-[50%] text-white'>
+        <p className='md:max-w-[50%] text-white mb-8'>
           We believe in long-lasting relationships with our clients.
           Over the years, we have helped thousands of homeowners,
           investors, and businesses achieve their real estate dreams.
@@ -34,7 +35,7 @@ function SuccessStories() {
           clients’ experiences into success.
         </p>
       </div>
-      <div className='relative flex flex-col max-w-full featured-slider-wrapper'>
+      <div className='relative flex flex-col w-full featured-slider-wrapper'>
         <Swiper
           className='w-full featured-slider -mx-[50px]'
           modules={[Navigation]}
@@ -51,24 +52,39 @@ function SuccessStories() {
           onSwiper={swiper => console.log(swiper)}>
           {testimonials?.map((testimonial, i) => (
             <SwiperSlide key={i}>
-              <div className='grid grid-cols-1 md:grid-cols-2'>
+              <div className='grid grid-cols-1 md:grid-cols-2 text-white justify-start items-stretch'>
                 <img
                   src={`/images/testimonials/${testimonial.building}`}
                   alt='testimonial.building'
-                  className='aspect-square'
+                  className='aspect-video object-cover'
                 />
-                <p>
-                  {testimonial.name} - {testimonial.title}
-                </p>
+                <div
+                  className='max-w-container w-full mx-auto relative bg-contain bg-no-repeat bg-center px-5 flex flex-col justify-between'
+                  style={{
+                    backgroundImage: `url(${sectionBg.src})`,
+                  }}>
+                  <div className='text'>
+                    <p className='text-lg mb-3'>
+                      {testimonial.name} - {testimonial.title}
+                    </p>
+                    <p>
+                      As a first-time buyer, I was unsure about the
+                      process of purchasing a home. The team at
+                      Solitaire guided me through each step, ensuring
+                      everything was transparent and straightforward.
+                      Thanks to their support, I’m now the proud owner
+                      of my dream apartment in Dubai Marina.
+                    </p>
+                  </div>
+                </div>
               </div>
             </SwiperSlide>
           ))}
         </Swiper>
-        <div className='max-w-container w-full mx-auto relative'>
-          <div className='custom-nav brightness-0 absolute top-0 left-0  invert mt-10 w-44 flex flex-row gap-5 justify-start z-50 '>
-            <ArrowRight className='swiper-button-next min-h-16 min-w-16 p-3 rounded-full border border-white'></ArrowRight>
-            <ArrowLeft className='swiper-button-prev min-h-16 min-w-16 p-3 rounded-full border border-white'></ArrowLeft>
-          </div>
+
+        <div className='custom-nav brightness-0 translate-y-[-50%] invert w-44 flex flex-row gap-5 justify-start z-50 '>
+          <ArrowRight className='swiper-button-next min-h-16 min-w-16 p-3 rounded-full border border-white'></ArrowRight>
+          <ArrowLeft className='swiper-button-prev min-h-16 min-w-16 p-3 rounded-full border border-white'></ArrowLeft>
         </div>
       </div>
     </div>
