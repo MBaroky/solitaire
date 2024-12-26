@@ -4,9 +4,8 @@ const nodemailer = require("nodemailer");
 // Handles POST requests to /api
 
 export async function POST(request) {
-  const username = "barokywork@outlook.com"; // process.env.NEXT_EMAIL_USERNAME;
-  // const password = "xknhcyrmhxnwxvpn"; // process.env.NEXT_EMAIL_PASSWORD;
-  const password = "tdfzdgmamzdsvzss"; // process.env.NEXT_EMAIL_PASSWORD;
+  const username = process.env.NEXT_EMAIL_USERNAME;
+  const password = process.env.NEXT_EMAIL_PASSWORD;
   const myEmail = "m.baroky@gmail.com";
 
   const formData = await request.formData();
@@ -17,14 +16,11 @@ export async function POST(request) {
   let transporter = nodemailer.createTransport({
     host: "smtp-mail.outlook.com",
     service: "outlook",
-    // host: "smtp.office365.com",
-    // port: "465 ",
     port: 587,
 
-    // secure: false, // true for port 465, false for other ports
+    secure: false, // true for port 465, false for other ports
     tls: {
       ciphers: "SSLv3",
-      // ciphers: "STARTTLS",
       rejectUnauthorized: false,
     },
 
