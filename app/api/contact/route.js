@@ -7,7 +7,7 @@ export async function POST(request) {
   const username = process.env.NEXT_PUBLIC_EMAIL_USERNAME;
   const sendEmail = process.env.NEXT_EMAIL_FROM;
   const password = process.env.NEXT_PUBLIC_EMAIL_PASSWORD;
-  const myEmail = "m.baroky@gmail.com";
+  const myEmail = "m.baroky@gmail.com, mitesh@bhatia.co";
 
   const formData = await request.formData();
   const name = formData.get("name");
@@ -32,7 +32,7 @@ export async function POST(request) {
       from: sendEmail,
       to: myEmail,
       replyTo: email,
-      subject: `Website activity from ${email}`,
+      subject: `Solitaire website activity from ${email}`,
       html: `
         <p>Name: ${name} </p>
         <p>Email: ${email} </p>
