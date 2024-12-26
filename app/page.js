@@ -8,6 +8,7 @@ import Know from "./sections/Know";
 import Services from "./sections/Services";
 import Why from "./sections/Why";
 import SuccessStories from "./sections/SuccessStories";
+import Contact from "./sections/Contact";
 
 export default function Home() {
   return (
@@ -22,6 +23,7 @@ export default function Home() {
       <Services />
       <Why />
       <SuccessStories />
+      <Contact />
       <footer className=''></footer>
     </div>
   );

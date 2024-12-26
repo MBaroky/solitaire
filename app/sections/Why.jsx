@@ -49,7 +49,7 @@ function Why() {
                 className='absolute w-full h-full z-0 left-0 top-0 group-hover:hidden'
                 style={{
                   backgroundImage:
-                    "linear-gradient(180deg, rgba(27, 57, 66, 0.45) 0%, rgba(27, 57, 66, 0) 50%, rgba(27, 57, 66, 0.45) 100%);",
+                    "linear-gradient(180deg, rgba(27, 57, 66, 0.45) 0%, rgba(27, 57, 66, 0) 50%, rgba(27, 57, 66, 0.45) 100%)",
                 }}></span>
               <p className='z-1 relative'>{column.text}</p>
               <h2 className='z-1 relative font-gerbil text-heading-1'>
