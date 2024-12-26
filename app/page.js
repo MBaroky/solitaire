@@ -9,6 +9,7 @@ import Services from "./sections/Services";
 import Why from "./sections/Why";
 import SuccessStories from "./sections/SuccessStories";
 import Contact from "./sections/Contact";
+// import { Form } from "./sections/Form";
 
 export default function Home() {
   return (
@@ -24,6 +25,7 @@ export default function Home() {
       <Why />
       <SuccessStories />
       <Contact />
+      {/* <Form /> */}
       <footer className=''></footer>
     </div>
   );
