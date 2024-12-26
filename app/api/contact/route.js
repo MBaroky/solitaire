@@ -12,6 +12,7 @@ export async function POST(request) {
   const formData = await request.formData();
   const name = formData.get("name");
   const email = formData.get("email");
+  const phone = formData.get("phone");
   const message = formData.get("message");
 
   let transporter = nodemailer.createTransport({
@@ -35,6 +36,7 @@ export async function POST(request) {
       html: `
         <p>Name: ${name} </p>
         <p>Email: ${email} </p>
+        <p>Phone number: ${phone} </p>
         <p>Message: ${message} </p>
         `,
     });

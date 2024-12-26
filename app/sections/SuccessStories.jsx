@@ -23,7 +23,7 @@ function SuccessStories() {
   }, []);
   return (
     <div className='bg-gold w-full py-20'>
-      <div className='w-full max-w-container mx-auto'>
+      <div className='w-full max-w-container mx-auto px-5'>
         <h2 className='text-heading-1 font-gerbil text-white'>
           Clients Success Stories
         </h2>

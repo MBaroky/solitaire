@@ -30,7 +30,7 @@ function Why() {
   ];
   return (
     <div className='w-full bg-background py-16'>
-      <div className='max-w-container w-full mx-auto'>
+      <div className='max-w-container w-full mx-auto px-5'>
         <h2 className='text-heading-1 text-dark font-gerbil'>
           Why Choose Us
         </h2>

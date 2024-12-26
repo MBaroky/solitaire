@@ -20,7 +20,7 @@ function Who() {
   }, []);
   return (
     <div className='w-full py-20' id='who'>
-      <div className='max-w-container mx-auto'>
+      <div className='max-w-container mx-auto px-5'>
         <h2 className='text-heading-1 text-dark font-gerbil mb-10'>
           Who We Are
         </h2>

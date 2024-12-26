@@ -11,7 +11,7 @@ function Know() {
         style={{
           backgroundImage: `url(${Agent.src})`,
         }}></div>
-      <div className='max-w-container mx-auto relative z-1'>
+      <div className='max-w-container mx-auto relative px-5 z-1'>
         <h2 className='text-heading-1 text-dark font-gerbil mb-10'>
           Get To Know Us
         </h2>
