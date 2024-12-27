@@ -14,9 +14,7 @@ import Footer from "./sections/Footer";
 
 export default function Home() {
   return (
-    <div className={``}>
-      {/* <Profile /> */}
-      <main className='flex flex-col gap-8 row-start-2 items-center sm:items-start'></main>
+    <main className=''>
       <Header data={{ Logo }} />
       <Hero />
       <Who />
@@ -27,7 +25,7 @@ export default function Home() {
       <SuccessStories />
       <Contact />
       {/* <Form /> */}
-      <Footer />
-    </div>
+      <Footer data={{ Logo }} />
+    </main>
   );
 }
