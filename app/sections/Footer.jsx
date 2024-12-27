@@ -14,9 +14,18 @@ function Footer({ data }) {
           <Link href={"/"} className='w-auto inline-block'>
             <img width={`240`} src={data.Logo.src} />
           </Link>
-          <div className='grid grid-cols-4'>
+          <div className='w-full grid gap-10 grid-cols-1 md:grid-cols-4 text-white mt-14'>
             <div>
               <h4>Contact Us</h4>
+            </div>
+            <div>
+              <h4>Find Us</h4>
+            </div>
+            <div>
+              <h4>Quick Lnks</h4>
+            </div>
+            <div>
+              <h4>Follow Us</h4>
             </div>
           </div>
         </div>
