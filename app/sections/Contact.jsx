@@ -1,4 +1,5 @@
 "use client";
+import Validation from "@/components/Validation";
 import { MoveUpRight } from "lucide-react";
 import React, { useState } from "react";
 
@@ -60,44 +61,62 @@ export default function Contact() {
               {/* FORM  */}
               <form
                 onSubmit={handleSubmit}
-                className='mt-8 mb-2 w-80 max-w-screen-lg sm:w-96'>
-                <div className='mb-4 flex flex-col w-500 [&>input]:bg-transparent [&>input]:border-b [&>input]:border-dark [&>input]:mb-3 text-dark'>
-                  <label htmlFor='form-name'>Name </label>
-                  <input
-                    required
-                    id='form-name'
-                    autoComplete='name'
-                    maxLength={50}
-                    size='lg'
-                    name='name'
-                    className=''
-                  />
+                className='group mt-8 mb-2 w-80 max-w-screen-lg sm:w-96'
+                noValidate>
+                <div className='mb-4 flex flex-col w-500 [&_input]:bg-transparent [&_input]:border-b [&_input]:border-dark [&_input]:mb-3 text-dark'>
+                  <div className='w-full flex flex-col'>
+                    <label htmlFor='form-name'>Name </label>
+                    <input
+                      required
+                      id='form-name'
+                      autoComplete='name'
+                      maxLength={50}
+                      size='lg'
+                      name='name'
+                      placeholder=''
+                      className='peer invalid:[&:not(:placeholder-shown):not(:focus)]:border-red-500'
+                    />
+                    <Validation
+                      message={`Please give us your name`}
+                    />
+                  </div>
 
-                  <label htmlFor='form-email'> Email Address</label>
-                  <input
-                    id='form-email'
-                    required
-                    autoComplete='email'
-                    maxLength={80}
-                    name='email'
-                    type='email'
-                    className=''
-                  />
+                  <div className='w-full flex flex-col'>
+                    <label htmlFor='form-email'> Email Address</label>
+                    <input
+                      id='form-email'
+                      placeholder=' '
+                      required
+                      autoComplete='email'
+                      maxLength={80}
+                      name='email'
+                      type='email'
+                      className='peer mail invalid:[&:not(:placeholder-shown):not(:focus)]:border-red-500'
+                      pattern='[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$'
+                    />
+                    <Validation message='Please enter a valid email address' />
+                  </div>
 
-                  <label htmlFor='form-phone'> Phone Number</label>
-                  <input
-                    id='form-phone'
-                    required
-                    autoComplete='tel'
-                    maxLength={80}
-                    name='phone'
-                    type='tel'
-                    className=''
-                  />
+                  <div className='w-full flex flex-col'>
+                    <label htmlFor='form-phone'> Phone Number</label>
+                    <input
+                      id='form-phone'
+                      placeholder=' '
+                      required
+                      autoComplete='tel'
+                      maxLength={80}
+                      name='phone'
+                      type='tel'
+                      className='peer tel invalid:[&:not(:placeholder-shown):not(:focus)]:border-red-500'
+                      pattern='.{7,}'
+                    />
+                    <Validation message='Please enter a valid phone number' />
+                  </div>
 
                   <label htmlFor='form-message'> Message </label>
                   <textarea
                     id='form-message'
+                    placeholder=' '
                     required
                     name='message'
                     rows={5}
@@ -106,7 +125,7 @@ export default function Contact() {
                 </div>
                 <button
                   className='w-40 h-40 text-white
- flex items-center justify-center gap-3 rounded-full bg-gold'
+ flex items-center justify-center gap-3 rounded-full bg-gold group-invalid:pointer-events-none '
                   type='submit'>
                   Send <MoveUpRight />
                 </button>

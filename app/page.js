@@ -9,6 +9,7 @@ import Services from "./sections/Services";
 import Why from "./sections/Why";
 import SuccessStories from "./sections/SuccessStories";
 import Contact from "./sections/Contact";
+import Footer from "./sections/Footer";
 // import { Form } from "./sections/Form";
 
 export default function Home() {
@@ -26,7 +27,7 @@ export default function Home() {
       <SuccessStories />
       <Contact />
       {/* <Form /> */}
-      <footer className=''></footer>
+      <Footer />
     </div>
   );
 }
