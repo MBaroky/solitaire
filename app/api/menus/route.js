@@ -9,7 +9,7 @@ const menus = {
     { title: "Blogs", url: "/" },
   ],
   footerMenu: [
-    { title: "About Us", url: "/" },
+    { title: "About Us", url: "/about" },
     { title: "Services", url: "/" },
   ],
 };

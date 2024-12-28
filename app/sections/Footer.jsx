@@ -1,3 +1,4 @@
+"use client";
 import Social from "@/components/Social";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
