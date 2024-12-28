@@ -26,7 +26,7 @@ function Services() {
       <div className='w-full max-w-container mx-auto grid grid-cols-1'>
         {services?.map((service, i) => (
           <div key={i}>
-            <div className='w-full flex justify-between items-end gap-3 p-1 py-3'>
+            <div className='w-full flex flex-col md:flex-row justify-between items-end gap-3 p-1 py-3'>
               <div>
                 <h3 className='text-4xl text-gold font-gerbil'>
                   <span

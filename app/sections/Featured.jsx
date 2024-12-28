@@ -34,7 +34,7 @@ function Featured() {
         backgroundImage: `url(${sectionBg.src})`,
       }}>
       <div className=' featured-content py-8 '>
-        <div className='relative flex flex-col max-w-full featured-slider-wrapper'>
+        <div className='relative flex flex-col max-w-full featured-slider-wrapper overflow-x-clip'>
           <Swiper
             className='w-full featured-slider -mx-[50px]'
             modules={[Navigation]}

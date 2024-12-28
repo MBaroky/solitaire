@@ -15,10 +15,10 @@ function Header({ data }) {
   useEffect(() => {
     //create the abort controller
     let controller = new AbortController();
-    fetch("/api/pages", { signal: controller.signal })
+    fetch("/api/menus", { signal: controller.signal })
       .then(res => res.json())
       .then(data => {
-        setPages(data);
+        setPages(data.mainMenu);
         setLoading(false);
       });
     //abort the request when the component umounts
@@ -28,7 +28,7 @@ function Header({ data }) {
   return (
     <div
       id='main-header'
-      className='w-full items-center bg-dark py-3 px-12 flex flex-row justify-between z-10 relative'>
+      className='w-full items-center bg-dark py-3 px-12 flex flex-row justify-between z-[999] relative'>
       <div id='logo'>
         <Link href='/'>
           {<img src={data.Logo.src} className='max-w-full' />}
