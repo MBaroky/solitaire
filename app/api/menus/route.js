@@ -5,7 +5,7 @@ const menus = {
     { title: "Projects", url: "/" },
     { title: "Developers", url: "/" },
     { title: "Areas", url: "/" },
-    { title: "Services", url: "/" },
+    { title: "Services", url: "/Services" },
     { title: "Blogs", url: "/" },
     {
       title: "More",
@@ -25,7 +25,7 @@ const menus = {
   ],
   footerMenu: [
     { title: "About Us", url: "/about" },
-    { title: "Services", url: "/" },
+    { title: "Services", url: "/Services" },
   ],
 };
 
