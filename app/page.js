@@ -1,4 +1,3 @@
-"use client";
 import Hero from "./sections/Hero";
 import Who from "./sections/Who";
 import Featured from "./sections/Featured";

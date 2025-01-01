@@ -1,3 +1,4 @@
+"use client";
 import React, { useState, useEffect, useRef } from "react";
 import CountUp from "react-countup";
 import { useIsVisible } from "@/components/utils/isVisible";

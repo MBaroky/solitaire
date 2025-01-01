@@ -6,7 +6,7 @@ const menus = {
     { title: "Developers", url: "/" },
     { title: "Areas", url: "/" },
     { title: "Services", url: "/Services" },
-    { title: "Blogs", url: "/" },
+    { title: "Blogs", url: "/Blog" },
     {
       title: "More",
       url: "",

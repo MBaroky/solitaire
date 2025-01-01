@@ -1,3 +1,4 @@
+"use client";
 import React, { useState, useEffect } from "react";
 import sectionBg from "@/assets/images/featured-bg.svg";
 // Import Swiper React components

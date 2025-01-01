@@ -1,3 +1,4 @@
+"use client";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import React, { useEffect, useState } from "react";
 import sectionBg from "@/assets/images/success-bg.png";
