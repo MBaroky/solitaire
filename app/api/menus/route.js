@@ -24,7 +24,7 @@ const menus = {
     },
   ],
   footerMenu: [
-    { title: "About Us", url: "/about" },
+    { title: "About Us", url: "/About" },
     { title: "Services", url: "/Services" },
   ],
 };
