@@ -53,7 +53,7 @@ function SearchBar({ handler, data }) {
         // action=''
         className='flex flex-row py-5 items-stretch min-w-full'>
         <label
-          className='bg-white border-0 items-center flex flex-row flex-grow gap-3'
+          className='bg-white border-0 items-center flex flex-row flex-grow gap-3 px-3'
           htmlFor=''>
           <Search />
           <input

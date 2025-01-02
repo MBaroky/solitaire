@@ -3,8 +3,9 @@ import Link from "next/link";
 import React, { useState, useEffect, useRef } from "react";
 
 import Burger from "./Burger";
-import { ChevronDown, LoaderCircle } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 import { usePathname } from "next/navigation";
+import Loader from "./Loader";
 
 function Header({ data }) {
   const [pages, setPages] = useState([]);
@@ -13,7 +14,7 @@ function Header({ data }) {
   const handleClick = () => {
     setIsOpen(!isOpen);
   };
-  const [isLoading, setLoading] = useState(true);
+  const [isLoading, setLoading] = useState(false);
   const pathname = usePathname();
 
   // close menu on navigation
@@ -32,6 +33,7 @@ function Header({ data }) {
     });
   }, []);
   useEffect(() => {
+    setLoading(true);
     //create the abort controller
     let controller = new AbortController();
     fetch("/api/menus", { signal: controller.signal })
@@ -62,9 +64,9 @@ function Header({ data }) {
         {isOpen && (
           <ul className='animate-in slide-in-from-top absolute right-0 top-full min-w-[350px] bg-dark py-8 text-white'>
             {isLoading ? (
-              <LoaderCircle className='animate-spin repeat-infinite' />
+              <Loader />
             ) : (
-              pages.map((page, i) => (
+              pages?.map((page, i) => (
                 <li className={`${menuItemStyles} group`} key={i}>
                   <Link className='w-full block' href={page.url}>
                     {page.title}{" "}

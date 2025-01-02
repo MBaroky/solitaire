@@ -15,7 +15,7 @@ const menus = {
         { title: "Meet the team", url: "/" },
         { title: "Careers", url: "/" },
         { title: "Our Awards", url: "/" },
-        { title: "Contact us", url: "/" },
+        { title: "Contact us", url: "/Contact" },
         { title: "Real estate guides", url: "/" },
         { title: "complaints procedure", url: "/" },
         { title: "philanthropy", url: "/" },
