@@ -2,8 +2,11 @@ import { readdirSync } from "fs";
 import { join } from "path";
 
 export const POSTS_PATH = join(process.cwd(), "app/posts");
+export const pathlist = readdirSync(POSTS_PATH);
 
-export const paths = readdirSync(POSTS_PATH);
-export const params = paths
-  .map(path => path.replace(/\.mdx?$/, ""))
-  .map(slug => ({ slug: slug }));
+export function generateStaticParams() {
+  const paths = pathlist
+    .map(path => path.replace(/\.mdx?$/, ""))
+    .map(slug => ({ slug }));
+  return paths;
+}

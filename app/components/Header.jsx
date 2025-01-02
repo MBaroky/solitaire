@@ -51,7 +51,7 @@ function Header({ data }) {
       id='main-header'
       className='w-full items-center bg-dark py-3 px-12 flex flex-row justify-between z-[999] relative'>
       <div id='logo'>
-        <Link href='/'>
+        <Link className='outline-none' href='/'>
           {<img src={data.Logo.src} className='max-w-full' />}
         </Link>
       </div>

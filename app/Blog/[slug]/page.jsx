@@ -1,7 +1,5 @@
-import { readdirSync } from "fs";
 import { MoveLeft } from "lucide-react";
 import Link from "next/link";
-import { join } from "path";
 
 export default async function Page({ params }) {
   const slug = (await params).slug;
@@ -37,15 +35,6 @@ export default async function Page({ params }) {
       </div>
     </div>
   );
-}
-
-export const POSTS_PATH = join(process.cwd(), "app/posts");
-
-export function generateStaticParams() {
-  const paths = readdirSync(POSTS_PATH)
-    .map(path => path.replace(/\.mdx?$/, ""))
-    .map(slug => ({ slug: slug }));
-  return paths;
 }
 
 export const dynamicParams = false;

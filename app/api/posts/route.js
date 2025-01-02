@@ -1,9 +1,15 @@
-import { paths } from "@/lib/posts";
+import { pathlist } from "@/lib/posts";
 
-const postsPaths = paths;
-const endpoint = postsPaths.map(
-  async path => (await import(`@/posts/${path}`))?.metadata
-);
+const postsPaths = pathlist;
+let endpoint = [];
+postsPaths.map(async path => {
+  try {
+    let { metadata } = await import(`@/posts/${path}`);
+    endpoint = [metadata, ...endpoint];
+  } catch {
+    return;
+  }
+});
 console.log(endpoint);
 
 // const endpoint = [
