@@ -13,7 +13,6 @@ function Footer({ data }) {
       .then(res => res.json())
       .then(data => {
         setContactInfo(data);
-        console.log(data["connections"]);
       });
     //abort the request when the component umounts
     return () => controller?.abort();

@@ -4,7 +4,7 @@ const endpoint = [
     image: "post-1.jpeg",
     title: "Investing in Your Future with Real Estate",
     desc: "Discover the potential of real estate investments. Learn how Solitaire Crest...",
-    url: "",
+    slug: "",
   },
   {
     post_id: 2,
