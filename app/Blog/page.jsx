@@ -1,7 +1,7 @@
 "use client";
 import SearchBar from "@/components/SearchBar";
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 // TODO: filter
 // TODO: sorting
 // TODO: pagination
@@ -20,7 +20,9 @@ function Blog() {
   return (
     <div className='w-full bg-background'>
       <div className='w-full max-w-container mx-auto'>
-        <SearchBar handler={setPosts} data={allPosts} />
+        <Suspense>
+          <SearchBar handler={setPosts} data={allPosts} />
+        </Suspense>
         <ul className='grid md:grid-cols-3 grid-cols-1 gap-5 my-5'>
           {posts?.map((post, i) => {
             return (

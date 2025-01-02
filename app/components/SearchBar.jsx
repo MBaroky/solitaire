@@ -5,7 +5,7 @@ import { useSearchParams } from "next/navigation";
 
 function SearchBar({ handler, data }) {
   const searchParams = useSearchParams();
-  const searchQuery = searchParams && searchParams.get("q");
+  const searchQuery = searchParams?.get("q");
   const [inputValue, setValue] = useState(searchQuery);
 
   const handleSearch = () => {
