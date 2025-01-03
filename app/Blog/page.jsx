@@ -1,5 +1,6 @@
 "use client";
 import Loader from "@/components/Loader";
+import Pagination, { PaginationItem } from "@/components/Pagination";
 import SearchBar from "@/components/SearchBar";
 import Link from "next/link";
 import React, { Suspense, useEffect, useState } from "react";
@@ -33,7 +34,36 @@ function Blog() {
           </div>
         ) : (
           <>
-            <ul className='grid md:grid-cols-3 grid-cols-1 gap-5 my-5'>
+            {posts && (
+              <Pagination
+                className={`grid md:grid-cols-3 grid-cols-1 gap-5 my-5`}
+                perPage={6}>
+                {posts?.map((post, i) => {
+                  return (
+                    <PaginationItem key={i}>
+                      <Link href={`/Blog/${post.slug}`}>
+                        <div className='relative w-full aspect-video'>
+                          <img
+                            className='aspect-video object-cover relative z-10'
+                            src={`images/posts/${post.img}`}
+                          />
+                          <div className='absolute w-full h-full left-0 top-0 bg-slate-200 rounded-md animate-pulse z-0'></div>
+                        </div>
+                        <div className='p-8'>
+                          <h3 className='font-gerbil text-xl'>
+                            {post.title}
+                          </h3>
+                          <p className='text-neutral-500 mt-3'>
+                            {post.excerpt}
+                          </p>
+                        </div>
+                      </Link>
+                    </PaginationItem>
+                  );
+                })}
+              </Pagination>
+            )}
+            {/* <ul className='grid md:grid-cols-3 grid-cols-1 gap-5 my-5'>
               {posts?.map((post, i) => {
                 return (
                   <li className='border border-l-neutral-300' key={i}>
@@ -54,7 +84,7 @@ function Blog() {
                   </li>
                 );
               })}
-            </ul>
+            </ul> */}
           </>
         )}
       </div>
