@@ -2,12 +2,14 @@
 import Loader from "@/components/Loader";
 import Pagination, { PaginationItem } from "@/components/Pagination";
 import SearchBar from "@/components/SearchBar";
+import useScreenSize from "@/lib/useScreenSize";
 import Link from "next/link";
 import React, { Suspense, useEffect, useState } from "react";
 // TODO: filter
 // TODO: sorting
-// TODO: pagination
+// [x]: pagination
 function Blog() {
+  const screenSize = useScreenSize();
   const [posts, setPosts] = useState([]);
   const [allPosts, setAllPosts] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -36,8 +38,8 @@ function Blog() {
           <>
             {posts && (
               <Pagination
-                className={`grid md:grid-cols-3 grid-cols-1 gap-5 my-5`}
-                perPage={6}>
+                className={`grid md:grid-cols-3 grid-cols-2 gap-5 my-5`}
+                perPage={screenSize.width > 767 ? 3 : 2}>
                 {posts?.map((post, i) => {
                   return (
                     <PaginationItem key={i}>

@@ -1,14 +1,22 @@
 import React, { useEffect, useState } from "react";
 import Loader from "./Loader";
+import { MoveLeft, MoveRight } from "lucide-react";
 
 function Pagination({ perPage = 6, children, className }) {
   const [currentPage, setCurrentPage] = useState(1);
   const [paginated, setPaginated] = useState({ children, perPage });
-  // TODO: next and prev buttons on more than 3 pages
-  // TODO: responsive perPage
+  // [x]: next and prev buttons on more than 3 pages
+  // [x]: responsive perPage
   const handleClick = e => {
     setCurrentPage(e.target.value);
   };
+  const nextPage = () => {
+    setCurrentPage(parseInt(currentPage) + 1);
+  };
+  const prevPage = () => {
+    setCurrentPage(parseInt(currentPage) - 1);
+  };
+  const handleChange = () => {};
   useEffect(() => {
     const pages = Math.ceil(children.length / perPage);
     const content = children;
@@ -39,6 +47,17 @@ function Pagination({ perPage = 6, children, className }) {
       <ul
         id='buttons'
         className='flex flex-row justify-center items-stretch gap-3 py-3'>
+        {paginated?.pages > 2 && currentPage > 1 ? (
+          <li>
+            <button
+              onClick={prevPage}
+              className='h-10 bg-gold text-white px-3'>
+              <MoveLeft />
+            </button>
+          </li>
+        ) : (
+          ""
+        )}
         {paginated.pages > 1 &&
           Array.from({ length: paginated.pages }).map((item, i) => (
             <li key={i} className=''>
@@ -48,8 +67,9 @@ function Pagination({ perPage = 6, children, className }) {
                 value={i + 1}
                 type='radio'
                 name='pagination'
-                defaultChecked={parseInt(currentPage) === i + 1}
+                checked={parseInt(currentPage) === i + 1}
                 onClick={handleClick}
+                onChange={handleChange}
               />
               <label
                 className='cursor-pointer bg-white aspect-square flex w-10 justify-center items-center border border-white peer-checked:border-gold'
@@ -58,6 +78,17 @@ function Pagination({ perPage = 6, children, className }) {
               </label>
             </li>
           ))}
+        {paginated?.pages > 2 && currentPage < paginated.pages ? (
+          <li>
+            <button
+              onClick={nextPage}
+              className='h-10 bg-gold text-white px-3'>
+              <MoveRight />
+            </button>
+          </li>
+        ) : (
+          ""
+        )}
       </ul>
     </>
   );
