@@ -27,8 +27,6 @@ function Pagination({ perPage = 6, children, className }) {
       pages,
       content,
     });
-    // console.log(paginated);
-    // console.log(currentPage);
   }, [children]);
   return (
     <>

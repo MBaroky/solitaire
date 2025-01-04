@@ -40,6 +40,7 @@ function Blog() {
               <Pagination
                 className={`grid md:grid-cols-3 grid-cols-2 gap-5 my-5`}
                 perPage={screenSize.width > 767 ? 3 : 2}>
+                {console.log(screenSize)}
                 {posts?.map((post, i) => {
                   return (
                     <PaginationItem key={i}>

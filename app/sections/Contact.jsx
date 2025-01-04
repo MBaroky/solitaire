@@ -30,7 +30,6 @@ export default function Contact({ layout }) {
 
       // success
       const responseData = await response.json();
-      console.log(responseData["message"]);
       setLoading(false);
       setFormError(null); // remove error state value
       setFormSuccess("Message successfully sent");
