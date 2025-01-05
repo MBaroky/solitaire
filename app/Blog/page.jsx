@@ -40,7 +40,13 @@ function Blog() {
             {posts && (
               <Pagination
                 className={`grid md:grid-cols-3 grid-cols-2 gap-5 my-5`}
-                perPage={screenSize.width > 767 ? 3 : 2}>
+                perPage={
+                  screenSize.width > 767
+                    ? 3
+                    : screenSize.width < 350
+                    ? 1
+                    : 2
+                }>
                 {posts?.map((post, i) => {
                   return (
                     <PaginationItem key={i}>
