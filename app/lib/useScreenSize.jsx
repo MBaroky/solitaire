@@ -14,10 +14,12 @@ const useScreenSize = () => {
     };
 
     window.addEventListener("resize", handleResize);
+    window.addEventListener("load", handleResize);
 
     // Clean up the event listener when the component unmounts
     return () => {
       window.removeEventListener("resize", handleResize);
+      window.removeEventListener("load", handleResize);
     };
   }, []);
 

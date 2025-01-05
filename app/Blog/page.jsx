@@ -24,6 +24,7 @@ function Blog() {
         setLoading(false);
       });
   }, []);
+  // FIXME: fix the responsive part on production
   return (
     <div className='w-full bg-background'>
       <div className='w-full max-w-container mx-auto'>
