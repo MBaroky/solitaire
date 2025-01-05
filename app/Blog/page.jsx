@@ -39,7 +39,7 @@ function Blog() {
           <>
             {posts && (
               <Pagination
-                className={`grid md:grid-cols-3 grid-cols-2 gap-5 my-5`}
+                className={`grid md:grid-cols-3 grid-cols-1 sm:grid-cols-2 gap-5 my-5`}
                 perPage={
                   screenSize.width > 767
                     ? 3
