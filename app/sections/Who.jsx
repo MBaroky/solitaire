@@ -16,8 +16,6 @@ function Who() {
       .then(data => {
         setCounters(data);
       });
-    //abort the request when the component umounts
-    return () => controller?.abort();
   }, []);
   return (
     <div className='w-full py-20' id='who'>

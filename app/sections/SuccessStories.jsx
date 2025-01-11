@@ -20,7 +20,6 @@ function SuccessStories() {
       .then(data => {
         setTestimonials(data);
       });
-    return () => controller?.abort();
   }, []);
   return (
     <div className='bg-gold w-full py-20'>

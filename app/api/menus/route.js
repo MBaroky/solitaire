@@ -1,7 +1,7 @@
 const menus = {
   mainMenu: [
-    { title: "Buy", url: "/" },
-    { title: "Rent", url: "/" },
+    { title: "Buy", url: "/Buy" },
+    { title: "Rent", url: "/Rent" },
     { title: "Projects", url: "/" },
     { title: "Developers", url: "/" },
     { title: "Areas", url: "/" },

@@ -23,8 +23,6 @@ function Featured() {
       .then(data => {
         setPropsList(data.filter(prop => prop.featured === true));
       });
-    //abort the request when the component umounts
-    return () => controller?.abort();
   }, []);
 
   return (

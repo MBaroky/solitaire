@@ -14,8 +14,6 @@ function Footer({ data }) {
       .then(data => {
         setContactInfo(data);
       });
-    //abort the request when the component umounts
-    return () => controller?.abort();
   }, []);
   useEffect(() => {
     //create the abort controller
@@ -25,8 +23,6 @@ function Footer({ data }) {
       .then(data => {
         setFooterMenu(data.footerMenu);
       });
-    //abort the request when the component umounts
-    return () => controller?.abort();
   }, []);
 
   return (

@@ -16,7 +16,6 @@ function Services() {
         setServices(data);
         setLoading(false);
       });
-    return () => controller?.abort();
   }, []);
   return (
     <div>

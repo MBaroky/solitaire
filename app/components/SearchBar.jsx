@@ -1,13 +1,15 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { MoveUpRight, Search } from "lucide-react";
+import { MoveUpRight, Search, XCircle } from "lucide-react";
 import { useSearchParams } from "next/navigation";
 
 function SearchBar({ handler, data }) {
   const searchParams = useSearchParams();
   const searchQuery = searchParams?.get("q");
   const [inputValue, setValue] = useState(searchQuery);
-
+  const handleClear = () => {
+    setValue("");
+  };
   const handleSearch = () => {
     if (inputValue) {
       handler(
@@ -65,6 +67,12 @@ function SearchBar({ handler, data }) {
             onChange={handleChange}
             onKeyDown={handleKeyPress}
           />
+          {inputValue?.length > 0 && (
+            <XCircle
+              className='text-neutral-300 cursor-pointer'
+              onClick={handleClear}
+            />
+          )}
         </label>
         <button
           type='submit'

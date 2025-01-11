@@ -41,11 +41,11 @@ function Blog() {
               <Pagination
                 className={`grid md:grid-cols-3 grid-cols-1 sm:grid-cols-2 gap-5 my-5`}
                 perPage={
-                  screenSize.width > 767
-                    ? 3
-                    : screenSize.width < 350
+                  screenSize.width < 350
                     ? 1
-                    : 2
+                    : screenSize.width < 767
+                    ? 2
+                    : 6
                 }>
                 {posts?.map((post, i) => {
                   return (
@@ -72,28 +72,6 @@ function Blog() {
                 })}
               </Pagination>
             )}
-            {/* <ul className='grid md:grid-cols-3 grid-cols-1 gap-5 my-5'>
-              {posts?.map((post, i) => {
-                return (
-                  <li className='border border-l-neutral-300' key={i}>
-                    <Link href={`/Blog/${post.slug}`}>
-                      <img
-                        className='aspect-video object-cover'
-                        src={`images/posts/${post.img}`}
-                      />
-                      <div className='p-8'>
-                        <h3 className='font-gerbil text-xl'>
-                          {post.title}
-                        </h3>
-                        <p className='text-neutral-500 mt-3'>
-                          {post.excerpt}
-                        </p>
-                      </div>
-                    </Link>
-                  </li>
-                );
-              })}
-            </ul> */}
           </>
         )}
       </div>

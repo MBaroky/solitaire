@@ -42,8 +42,6 @@ function Header({ data }) {
         setPages(data.mainMenu);
         setLoading(false);
       });
-    //abort the request when the component umounts
-    return () => controller?.abort();
   }, []);
   const menuItemStyles = "font-gerbil pb-3 px-8";
 
