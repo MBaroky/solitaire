@@ -7,59 +7,7 @@ import { createClient } from 'edgedb';
 
 const client = createClient();
 
-// const items = [
-//   {
-//     price: "35,000,000",
-//     excerpt:
-//       "Ultra-luxury waterfront villas with private beach access and panoramic views of the skyline",
-//     propertyArea: "Palm Jumeirah, Dubai",
-//     bedrooms: 6,
-//     bathrooms: 5,
-//     size: 15000,
-//     propertyType: "villa",
-//     contactInfo: "",
-//     images: ["1-01.webp", "1-02.webp", "1-03.webp"],
-//     buttons: [
-//       { text: "Book  A Viewing", url: "" },
-//       { text: "Call", url: "" },
-//       { text: "Message", url: "" },
-//     ],
-//   },
-//   {
-//     price: "25,000,000",
-//     excerpt:
-//       "Expansive villas with golf course views, landscaped gardens, and luxurious interiors.",
-//     area: "Emirates Hills, Dubai",
-//     bedrooms: 8,
-//     bathrooms: 6,
-//     size: 12000,
-//     type: "Apartment",
-//     contactInfo: "",
-//     images: ["2-01.webp", "2-02.webp", "2-03.webp"],
-//     buttons: [
-//       { text: "Book  A Viewing", url: "" },
-//       { text: "Call", url: "" },
-//       { text: "Message", url: "" },
-//     ],
-//   },
-//   {
-//     price: "7,500,000",
-//     excerpt:
-//       "Ultra-luxury waterfront villas with private beach access and panoramic views of the skyline",
-//     area: "Palm Jumeirah, Dubai",
-//     bedrooms: 5,
-//     bathrooms: 5,
-//     size: 8500,
-//     type: "villa",
-//     contactInfo: "",
-//     images: ["3-01.webp", "3-02.webp", "3-03.webp"],
-//     buttons: [
-//       { text: "Book  A Viewing", url: "" },
-//       { text: "Call", url: "" },
-//       { text: "Message", url: "" },
-//     ],
-//   },
-// ];
+
 
 
 async function Rent() {
