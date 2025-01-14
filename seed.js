@@ -117,7 +117,7 @@ INSERT properties::SingleProperty{
     await client.close();
   }
 }
-items?.forEach(item => {
+items?.map(item => {
 
   seed(item);
 })
