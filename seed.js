@@ -51,7 +51,7 @@ INSERT properties::SingleProperty{
     (insert properties::button{text:='Call', url:=''}),
     (insert properties::button{text:='Message', url:=''}),
     },
-    images := {"2-01.webp", "2-02.webp", "2-03.webp"}
+    images := {"1-01.webp", "1-02.webp", "1-03.webp"}
   };
   INSERT properties::SingleProperty{
     propertyType := (
@@ -99,7 +99,7 @@ INSERT properties::SingleProperty{
     (insert properties::button{text:='Call', url:=''}),
     (insert properties::button{text:='Message', url:=''}),
     },
-    images := {"1-01.webp", "1-02.webp", "1-03.webp"}
+    images := {"2-01.webp", "2-02.webp", "2-03.webp"}
   };
   INSERT properties::SingleProperty{
     propertyType := (
