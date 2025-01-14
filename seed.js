@@ -109,7 +109,56 @@ INSERT properties::SingleProperty{
 `;
 
   try {
-    await client.execute(query);
+    await client.execute(`
+INSERT properties::SingleProperty{
+    propertyType := (
+      WITH existing_type := (
+        SELECT properties::PropertyType
+        FILTER properties::PropertyType.name = ${item.type.toLowerCase()}
+      )
+      SELECT (
+        INSERT properties::PropertyType {name := ${item.type.toLowerCase()}}
+        UNLESS CONFLICT ON .name
+        ELSE (SELECT existing_type)
+      )
+    ),
+    price:= ${parseInt(item.price)},
+    excerpt:= ${item.excerpt},
+    propertyArea := (
+      WITH existing_area := (
+        SELECT properties::PropertyArea
+        FILTER properties::PropertyArea.name = ${item.area.toLowerCase()}
+      )
+      SELECT (
+        INSERT properties::PropertyArea {name := ${item.area.toLowerCase()}}
+        UNLESS CONFLICT ON .name
+        ELSE (SELECT existing_area)
+      )
+    ),
+    developer := (
+      WITH existing_dev := (
+        SELECT properties::developer
+        FILTER properties::developer.name = "sodic"
+      )
+      SELECT (
+        INSERT properties::developer { name := "sodic"}
+        UNLESS CONFLICT ON .name
+        ELSE (SELECT existing_dev)
+      )
+    ),
+    lease:= 'Rent',
+    size:= ${parseInt(item.size)},
+    featured:=true,
+    bedrooms:= ${item.bedrooms},
+    bathrooms := ${item.bathrooms},
+    buttons := {
+    (insert properties::button{text:='Book  A Viewing', url:=''}),
+    (insert properties::button{text:='Call', url:=''}),
+    (insert properties::button{text:='Message', url:=''}),
+    },
+    images := {${item.images[0]}, ${item.images[1]}, ${item.images[2]}}
+  };
+`);
     console.log('Data inserted successfully');
   } catch (err) {
     console.error('Error inserting data:', err);
@@ -117,7 +166,7 @@ INSERT properties::SingleProperty{
     await client.close();
   }
 }
-items?.map(item => {
+items.map(item => {
 
   seed(item);
 })
