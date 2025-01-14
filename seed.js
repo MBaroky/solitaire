@@ -58,7 +58,7 @@ async function seed() {
     },
   ];
   const query = "";
-  items.forEach(item => {
+  items?.forEach(item => {
     query += `
 INSERT properties::SingleProperty{
     propertyType := (
