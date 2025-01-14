@@ -27,7 +27,7 @@ function Property({ data }) {
       </div>
       <div className='p-8 gap-6 flex flex-col text-dark'>
         <div className='flex flex-row justify-between'>
-          <h2 className='text-2xl font-gerbil'>AED { data.price }</h2>
+          <h2 className='text-2xl font-gerbil'>AED { data.price.toLocaleString("en", { useGrouping: true }) }</h2>
           <h5 className='capitalize'>{ data.propertyType.name }</h5>
         </div>
         <p className='text-neutral-500'>{ data.excerpt }</p>

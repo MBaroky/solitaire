@@ -7,9 +7,6 @@ import { createClient } from 'edgedb';
 
 const client = createClient();
 
-
-
-
 async function Rent() {
 
   const items = await client.query(`\
