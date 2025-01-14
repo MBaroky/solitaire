@@ -3,7 +3,7 @@ import Link from "next/link";
 import React from "react";
 function Property({ data }) {
   return (
-    <div key={ data.id } className='grid grid-cols-1 md:grid-cols-2'>
+    <div className='grid grid-cols-1 md:grid-cols-2'>
       <div className='grid grid-cols-2'>
         <div>
           <img

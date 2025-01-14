@@ -1,7 +1,6 @@
-import Loader from "@/components/Loader";
+
 import Pagination, { PaginationItem } from "@/components/Pagination";
 import Property from "@/components/Property";
-import Link from "next/link";
 import React from "react";
 import { createClient } from 'edgedb';
 
