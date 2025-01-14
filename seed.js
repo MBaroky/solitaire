@@ -1,7 +1,7 @@
 
 // seed.js
-const { Client } = require('edgedb');
-const client = new Client();
+const { createClient } = require('edgedb');
+const client = createClient();
 
 async function seed() {
   const query = `
@@ -53,12 +53,5 @@ INSERT properties::SingleProperty{
     },
     images := {"2-01.webp", "2-02.webp", "2-03.webp"}
   };
-`;
-  await client.execute(query);
-  console.log('Data inserted successfully');
-}
-
-seed().catch(err => {
-  console.error(err);
-  process.exit(1);
-}).finally(() => client.close());
+`; try { await client.execute(query); console.log('Data inserted successfully'); } catch (err) { console.error('Error inserting data:', err); } finally { await client.close(); }}
+seed();
