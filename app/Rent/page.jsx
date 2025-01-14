@@ -68,17 +68,18 @@ async function Rent() {
   const items = await client.query(`\
   select properties::SingleProperty {
     price,
-    propertyType,
+    propertyType: {name},
     lease,
-    propertyArea,
-    developer,
+    propertyArea:{name},
+    developer:{name},
     size,
     excerpt,
     featured,
     bedrooms,
     bathrooms,
     images,
-    buttons,
+
+    buttons:{text, url},
  };`);
   console.log(items)
   return (
@@ -92,9 +93,7 @@ async function Rent() {
               { items?.map((item, i) => {
                 return (
                   <PaginationItem key={ i }>
-                    <Link href={ `` }>
-                      <Property data={ item } />
-                    </Link>
+                    <Property data={ item } />
                   </PaginationItem>
                 );
               }) }

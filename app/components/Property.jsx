@@ -3,7 +3,7 @@ import Link from "next/link";
 import React from "react";
 function Property({ data }) {
   return (
-    <div className='grid grid-cols-1 md:grid-cols-2'>
+    <div key={ data.id } className='grid grid-cols-1 md:grid-cols-2'>
       <div className='grid grid-cols-2'>
         <div>
           <img
@@ -28,11 +28,11 @@ function Property({ data }) {
       <div className='p-8 gap-6 flex flex-col text-dark'>
         <div className='flex flex-row justify-between'>
           <h2 className='text-2xl font-gerbil'>AED { data.price }</h2>
-          <h5 className='capitalize'>{ data.propertyType }</h5>
+          <h5 className='capitalize'>{ data.propertyType.name }</h5>
         </div>
         <p className='text-neutral-500'>{ data.excerpt }</p>
         <div className='flex flex-row gap-3'>
-          <MapPin className='w-8' /> { data.propertyArea }
+          <MapPin className='w-8' /> { data.propertyArea.name }
         </div>
         <div className='flex flex-row gap-3'>
           <BedDouble className='w-8' /> { data.bedrooms } Bedrooms
@@ -48,7 +48,7 @@ function Property({ data }) {
         <div className='grid grid-cols-1 md:grid-cols-3 gap-2'>
           { data.buttons.map((button, i) => (
             <Link
-              href={ button.url }
+              href={ button.url ? button.url : "" }
               className='bg-gold w-full text-white p-3 text-center'
               Key={ i }>
               { button.text }
