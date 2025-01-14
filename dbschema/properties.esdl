@@ -17,6 +17,10 @@ module properties {
     image: str;
     logo: str;
   }
+  type button {
+    text:str;
+    url:str;
+  }
 
   type SingleProperty {
     required price: int32;
@@ -29,7 +33,9 @@ module properties {
     required size: int32;
     excerpt: str;
     featured: bool;
-    badrooms: int16;
+    bedrooms: int16;
     bathrooms: int16;
+    multi images: str;
+    multi buttons: button;
   }
 };
