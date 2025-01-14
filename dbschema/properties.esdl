@@ -26,5 +26,10 @@ module properties {
     }
     required propertyArea: PropertyArea;
     required developer: developer;
+    required size: int32;
+    excerpt: str;
+    featured: bool;
+    badrooms: int16;
+    bathrooms: int16;
   }
 };
