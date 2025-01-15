@@ -1,42 +1,28 @@
-
+"use client"
 import Pagination, { PaginationItem } from "@/components/Pagination";
 import Property from "@/components/Property";
-import React from "react";
-import { createClient } from 'edgedb';
+import React, { useEffect, useState } from "react";
 
-
-const client = createClient();
-
-async function Rent() {
-  // TODO: move this to a query file
-  // TODO: add a filter to only show properties with lease = 'Rent'
-  // TODO: move the request to API route
-  const items = await client.query(`\
-  select properties::SingleProperty {
-    price,
-    propertyType: {name},
-    lease,
-    propertyArea:{name},
-    developer:{name},
-    size,
-    excerpt,
-    featured,
-    bedrooms,
-    bathrooms,
-    images,
-
-    buttons:{text, url},
- };`);
-  console.log(items)
+function Rent() {
+  const [propsList, setPropsList] = useState([]);
+  useEffect(() => {
+    //create the abort controller
+    let controller = new AbortController();
+    fetch("/api/properties", { signal: controller.signal })
+      .then(res => res.json())
+      .then(data => {
+        setPropsList(data.filter(prop => prop.lease === "rent"));
+      });
+  }, []);
   return (
     <div className='w-full bg-background'>
       <div className='w-full max-w-container mx-auto'>
         <>
-          { items && (
+          { propsList && (
             <Pagination
               className={ `grid grid-cols-1 gap-5 my-5` }
               perPage={ 3 }>
-              { items?.map((item, i) => {
+              { propsList?.map((item, i) => {
                 return (
                   <PaginationItem key={ i }>
                     <Property data={ item } />

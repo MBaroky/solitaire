@@ -13,7 +13,7 @@ async function seed() {
     'Expansive villas with golf course views, landscaped gardens, and luxurious interiors.', // excerpt
     "Emirates Hills, Dubai", // area
     '2500', // size
-    "sodic", // developer
+    "damac", // developer
     true, // featured
     '8', // bedrooms,
     '3', // bathrooms,
@@ -27,7 +27,7 @@ async function seed() {
     `Ultra-luxury waterfront villas with private beach access and panoramic views of the skyline.`,
     "Palm Jumeirah, Dubai",
     '15,000',
-    "sodic",
+    "eemar",
     true,
     '15',
     '5',
@@ -41,12 +41,42 @@ async function seed() {
     `Ultra-luxury waterfront villas with private beach access and panoramic views of the skyline.`,
     "Palm Jumeirah, Dubai",
     '8,500',
-    "sodic",
+    "nakheel",
     true,
     '8',
     '3',
     ['', '', ''],
     ['3-01.webp', '3-02.webp', '3-03.webp']
+  );
+
+  const query3 = insertPropertyQuery(
+    'Buy',
+    "Villa",
+    '25,000,000',
+    `Ultra-luxury waterfront villas with private beach access and panoramic views of the skyline.`,
+    "Palm Jumeirah, Dubai",
+    '8,500',
+    "eemar",
+    true,
+    '8',
+    '3',
+    ['', '', ''],
+    ['3-01.webp', '3-02.webp', '3-03.webp']
+  );
+
+  const query4 = insertPropertyQuery(
+    'Buy',
+    "Apartment",
+    '6,000,000',
+    `Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut, nulla ea. Dolores molestiae praesentium enim, ad veritatis minima officiis, voluptatibus, nobis magnam minus saepe ullam quam? Et atque vitae repellendus.`,
+    "Khalifa rd. Abu Dhabi",
+    '4000',
+    "Sobha Realty ",
+    true,
+    '4',
+    '1',
+    ['', '', ''],
+    ['4-01.jpg', '4-02.jpg', '4-03.jpg']
   );
 
   try {
@@ -56,6 +86,8 @@ async function seed() {
     await client.execute(query);
     await client.execute(query1);
     await client.execute(query2);
+    await client.execute(query3);
+    await client.execute(query4);
     console.log('Data inserted successfully');
   } catch (err) {
     console.error('Error inserting data:', err);

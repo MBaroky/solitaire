@@ -29,35 +29,35 @@ function Featured() {
     <div
       className='w-full bg-dark pt-20 bg-top bg-contain bg-no-repeat'
       id='Featured'
-      style={{
+      style={ {
         backgroundImage: `url(${sectionBg.src})`,
-      }}>
+      } }>
       <div className=' featured-content py-8 '>
         <div className='relative flex flex-col max-w-full featured-slider-wrapper overflow-x-clip'>
           <Swiper
             className='w-full featured-slider -mx-[50px]'
-            modules={[Navigation]}
+            modules={ [Navigation] }
             // loop={true}
-            centeredSlides={true}
-            centeredSlidesBounds={true}
-            spaceBetween={50}
-            slidesPerView={2}
-            navigation={{
+            centeredSlides={ true }
+            centeredSlidesBounds={ true }
+            spaceBetween={ 50 }
+            slidesPerView={ 2 }
+            navigation={ {
               nextEl: ".swiper-button-next",
               prevEl: ".swiper-button-prev",
-            }}
-            onSlideChange={() => console.log("slide change")}
-            onSwiper={swiper => console.log(swiper)}>
-            {propsList &&
+            } }
+            onSlideChange={ () => console.log("slide change") }
+            onSwiper={ swiper => console.log(swiper) }>
+            { propsList &&
               propsList.map(prop => (
-                <SwiperSlide className='' key={prop.id}>
+                <SwiperSlide className='' key={ prop.id }>
                   <img
-                    className='aspect-square object-cover w-full'
-                    src={`/images/properties/${prop.image}`}
-                    alt={prop.title}
+                    className='aspect-video object-cover w-full'
+                    src={ `/images/properties/${prop.images[0]}` }
+                    alt={ prop.title }
                   />
                 </SwiperSlide>
-              ))}
+              )) }
           </Swiper>
           <div className='max-w-container w-full mx-auto relative'>
             <div className='custom-nav brightness-0 absolute top-0 left-0  invert mt-10 w-44 flex flex-row gap-5 justify-start z-50 '>
@@ -69,7 +69,7 @@ function Featured() {
             Featured Properties
           </h2>
         </div>
-        {/* endof featured-slider-wrapper */}
+        {/* endof featured-slider-wrapper */ }
         <div className='relative z-50 max-w-40 mx-auto flex justify-center md:-mt-10'>
           <CustomButton
             className=''
