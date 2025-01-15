@@ -50,7 +50,9 @@ async function seed() {
   );
 
   try {
+    console.log('Clearing database...');
     await client.execute(clearDatabaseQuery);
+    console.log('Database cleared.');
     await client.execute(query);
     await client.execute(query1);
     await client.execute(query2);
