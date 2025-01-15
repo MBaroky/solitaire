@@ -5,23 +5,23 @@ INSERT properties::SingleProperty{
     propertyType := (
       WITH existing_type := (
         SELECT properties::PropertyType
-        FILTER properties::PropertyType.name = '${type}'
+        FILTER properties::PropertyType.name = '${type.toLocaleLowerCase()}'
       )
       SELECT (
-        INSERT properties::PropertyType {name := '${type}'}
+        INSERT properties::PropertyType {name := '${type.toLocaleLowerCase()}'}
         UNLESS CONFLICT ON .name
         ELSE (SELECT existing_type)
       )
     ),
-    price:= ${parseInt(price)},
+    price:= ${parseInt(price.replace(/,/g, ''))},
     excerpt:= '${excerpt}',
     propertyArea := (
       WITH existing_area := (
         SELECT properties::PropertyArea
-        FILTER properties::PropertyArea.name = '${area}'
+        FILTER properties::PropertyArea.name = '${area.toLocaleLowerCase()}'
       )
       SELECT (
-        INSERT properties::PropertyArea {name := '${area}'}
+        INSERT properties::PropertyArea {name := '${area.toLocaleLowerCase()}'}
         UNLESS CONFLICT ON .name
         ELSE (SELECT existing_area)
       )
@@ -29,19 +29,19 @@ INSERT properties::SingleProperty{
     developer := (
       WITH existing_dev := (
         SELECT properties::developer
-        FILTER properties::developer.name = '${developer}'
+        FILTER properties::developer.name = '${developer.toLocaleLowerCase()}'
       )
       SELECT (
-        INSERT properties::developer { name := '${developer}'}
+        INSERT properties::developer { name := '${developer.toLocaleLowerCase()}'}
         UNLESS CONFLICT ON .name
         ELSE (SELECT existing_dev)
       )
     ),
-    lease:= '${lease}',
-    size:= ${parseInt(size)},
+    lease:= '${lease.toLocaleLowerCase()}',
+    size:= ${parseInt(size.replace(/,/g, ''))},
     featured:= ${featured},
-    bedrooms:= ${bedrooms},
-    bathrooms := ${bathrooms},
+    bedrooms:= ${parseInt(bedrooms)},
+    bathrooms := ${parseInt(bathrooms)},
     buttons := {
     (insert properties::button{text:='Book  A Viewing', url:='${urls[0]}'}),
     (insert properties::button{text:='Call', url:='${urls[1]}'}),

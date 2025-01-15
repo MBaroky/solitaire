@@ -11,11 +11,11 @@ async function seed() {
     '7,500,000', // price
     'Expansive villas with golf course views, landscaped gardens, and luxurious interiors.', // excerpt
     "Emirates Hills, Dubai", // area
-    2500, // size
+    '2500', // size
     "sodic", // developer
     true, // featured
-    8, // bedrooms,
-    3, // bathrooms,
+    '8', // bedrooms,
+    '3', // bathrooms,
     ['', '', ''], // urls ['Book  A Viewing', 'Call', 'Message']
     ['1-01.webp', '1-02.webp', '1-03.webp']// images
   );
@@ -28,8 +28,8 @@ async function seed() {
     '15,000',
     "sodic",
     true,
-    15,
-    5,
+    '15',
+    '5',
     ['', '', ''],
     ['2-01.webp', '2-02.webp', '2-03.webp']
   );
@@ -42,8 +42,8 @@ async function seed() {
     '8,500',
     "sodic",
     true,
-    8,
-    3,
+    '8',
+    '3',
     ['', '', ''],
     ['3-01.webp', '3-02.webp', '3-03.webp']
   );

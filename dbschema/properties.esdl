@@ -26,7 +26,7 @@ module properties {
     required price: int32;
     required propertyType: PropertyType;
     required lease: str{
-        constraint one_of ('Buy', 'Rent');
+        constraint one_of ('buy', 'rent');
     }
     required propertyArea: PropertyArea;
     required developer: developer;
