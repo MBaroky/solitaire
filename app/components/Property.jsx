@@ -1,29 +1,12 @@
 import { BedDouble, Expand, MapPin, ShowerHead } from "lucide-react";
 import Link from "next/link";
 import React from "react";
+import PropGallery from "./PropGallery";
 function Property({ data }) {
   return (
     <div className='grid grid-cols-1 md:grid-cols-2'>
       <div className='grid grid-cols-2'>
-        <div>
-          <img
-            className='aspect-[0.65] object-cover'
-            src={ `images/properties/${data.images[0]}` }
-            alt=''
-          />
-        </div>
-        <div>
-          <img
-            className='aspect-[1.3] object-cover'
-            src={ `images/properties/${data.images[1]}` }
-            alt=''
-          />
-          <img
-            className='aspect-[1.3] object-cover'
-            src={ `images/properties/${data.images[2]}` }
-            alt=''
-          />
-        </div>
+        <PropGallery data={ data.images } />
       </div>
       <div className='p-8 gap-6 flex flex-col text-dark'>
         <div className='flex flex-row justify-between'>
@@ -32,7 +15,7 @@ function Property({ data }) {
         </div>
         <p className='text-neutral-500'>{ data.excerpt }</p>
         <div className='flex flex-row gap-3'>
-          <MapPin className='w-8' /> { data.propertyArea.name }
+          <MapPin className='w-8' /> { data.propertyArea.name.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ') }
         </div>
         <div className='flex flex-row gap-3'>
           <BedDouble className='w-8' /> { data.bedrooms } Bedrooms

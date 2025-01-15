@@ -1,11 +1,11 @@
 
 // seed.js
 const { createClient } = require('edgedb');
-const { insertUserQuery } = require('./query');
+const { insertPropertyQuery } = require('./app/queries/insertPropertyQuery');
 const client = createClient();
 
 async function seed() {
-  const query = insertUserQuery(
+  const query = insertPropertyQuery(
     'Rent', // lease = 'Rent'
     "Apartment", // type
     '7,500,000', // price
@@ -19,7 +19,7 @@ async function seed() {
     ['', '', ''], // urls ['Book  A Viewing', 'Call', 'Message']
     ['1-01.webp', '1-02.webp', '1-03.webp']// images
   );
-  const query1 = insertUserQuery(
+  const query1 = insertPropertyQuery(
     'Rent',
     "Villa",
     '35,000,000',
@@ -33,7 +33,7 @@ async function seed() {
     ['', '', ''],
     ['2-01.webp', '2-02.webp', '2-03.webp']
   );
-  const query2 = insertUserQuery(
+  const query2 = insertPropertyQuery(
     'Rent',
     "Villa",
     '25,000,000',

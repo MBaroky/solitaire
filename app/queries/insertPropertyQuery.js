@@ -1,5 +1,5 @@
 // queries.js
-const insertUserQuery = (lease = 'Rent', type = "Apartment", price, excerpt, area, size, developer, featured, bedrooms, bathrooms, urls = ['', '', ''], images = ['', '', '']) => `
+const insertPropertyQuery = (lease = 'Rent', type = "Apartment", price, excerpt, area, size, developer, featured, bedrooms, bathrooms, urls = ['', '', ''], images = ['', '', '']) => `
 
 INSERT properties::SingleProperty{
     propertyType := (
@@ -52,5 +52,5 @@ INSERT properties::SingleProperty{
 `;
 
 module.exports = {
-  insertUserQuery,
+  insertPropertyQuery,
 };

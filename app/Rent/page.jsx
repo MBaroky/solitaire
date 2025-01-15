@@ -8,7 +8,9 @@ import { createClient } from 'edgedb';
 const client = createClient();
 
 async function Rent() {
-
+  // TODO: move this to a query file
+  // TODO: add a filter to only show properties with lease = 'Rent'
+  // TODO: move the request to API route
   const items = await client.query(`\
   select properties::SingleProperty {
     price,
