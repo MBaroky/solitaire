@@ -24,7 +24,8 @@ function Featured() {
         setPropsList(data.filter(prop => prop.featured === true));
       });
   }, []);
-
+  // TODO: Add a loading state
+  // TODO: solve the arrow navigation issue
   return (
     <div
       className='w-full bg-dark pt-20 bg-top bg-contain bg-no-repeat'
