@@ -5,10 +5,10 @@ INSERT properties::SingleProperty{
     propertyType := (
       WITH existing_type := (
         SELECT properties::PropertyType
-        FILTER properties::PropertyType.name = '${type.toLocaleLowerCase()}'
+        FILTER properties::PropertyType.name = '${type.toLowerCase()}'
       )
       SELECT (
-        INSERT properties::PropertyType {name := '${type.toLocaleLowerCase()}'}
+        INSERT properties::PropertyType {name := '${type.toLowerCase()}'}
         UNLESS CONFLICT ON .name
         ELSE (SELECT existing_type)
       )
@@ -18,10 +18,10 @@ INSERT properties::SingleProperty{
     propertyArea := (
       WITH existing_area := (
         SELECT properties::PropertyArea
-        FILTER properties::PropertyArea.name = '${area.toLocaleLowerCase()}'
+        FILTER properties::PropertyArea.name = '${area.toLowerCase()}'
       )
       SELECT (
-        INSERT properties::PropertyArea {name := '${area.toLocaleLowerCase()}'}
+        INSERT properties::PropertyArea {name := '${area.toLowerCase()}'}
         UNLESS CONFLICT ON .name
         ELSE (SELECT existing_area)
       )
@@ -29,15 +29,15 @@ INSERT properties::SingleProperty{
     developer := (
       WITH existing_dev := (
         SELECT properties::developer
-        FILTER properties::developer.name = '${developer.toLocaleLowerCase()}'
+        FILTER properties::developer.name = '${developer.toLowerCase()}'
       )
       SELECT (
-        INSERT properties::developer { name := '${developer.toLocaleLowerCase()}'}
+        INSERT properties::developer { name := '${developer.toLowerCase()}'}
         UNLESS CONFLICT ON .name
         ELSE (SELECT existing_dev)
       )
     ),
-    lease:= '${lease.toLocaleLowerCase()}',
+    lease:= '${lease.toLowerCase()}',
     size:= ${parseInt(size.replace(/,/g, ''))},
     featured:= ${featured},
     bedrooms:= ${parseInt(bedrooms)},
