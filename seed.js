@@ -1,8 +1,9 @@
-
 // seed.js
 const { createClient } = require('edgedb');
 const { insertPropertyQuery } = require('./app/queries/insertPropertyQuery');
 const client = createClient();
+
+const clearDatabaseQuery = 'DELETE properties::SingleProperty;';
 
 async function seed() {
   const query = insertPropertyQuery(
@@ -49,6 +50,7 @@ async function seed() {
   );
 
   try {
+    await client.execute(clearDatabaseQuery);
     await client.execute(query);
     await client.execute(query1);
     await client.execute(query2);
