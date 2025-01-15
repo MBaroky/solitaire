@@ -1,27 +1,27 @@
 // queries.js
-const insertUserQuery = () => `
+const insertUserQuery = (lease = 'Rent', type = "Apartment", price, excerpt, area, size, developer, featured, bedrooms, bathrooms, urls = ['', '', ''], images = ['', '', '']) => `
 
 INSERT properties::SingleProperty{
     propertyType := (
       WITH existing_type := (
         SELECT properties::PropertyType
-        FILTER properties::PropertyType.name = "Apartment"
+        FILTER properties::PropertyType.name = '${type}'
       )
       SELECT (
-        INSERT properties::PropertyType {name := "Apartment"}
+        INSERT properties::PropertyType {name := '${type}'}
         UNLESS CONFLICT ON .name
         ELSE (SELECT existing_type)
       )
     ),
-    price:= 25000000,
-    excerpt:= 'Expansive villas with golf course views, landscaped gardens, and luxurious interiors.',
+    price:= ${parseInt(price)},
+    excerpt:= '${excerpt}',
     propertyArea := (
       WITH existing_area := (
         SELECT properties::PropertyArea
-        FILTER properties::PropertyArea.name = "Emirates Hills, Dubai"
+        FILTER properties::PropertyArea.name = '${area}'
       )
       SELECT (
-        INSERT properties::PropertyArea {name := "Emirates Hills, Dubai"}
+        INSERT properties::PropertyArea {name := '${area}'}
         UNLESS CONFLICT ON .name
         ELSE (SELECT existing_area)
       )
@@ -29,124 +29,28 @@ INSERT properties::SingleProperty{
     developer := (
       WITH existing_dev := (
         SELECT properties::developer
-        FILTER properties::developer.name = "sodic"
+        FILTER properties::developer.name = '${developer}'
       )
       SELECT (
-        INSERT properties::developer { name := "sodic"}
+        INSERT properties::developer { name := '${developer}'}
         UNLESS CONFLICT ON .name
         ELSE (SELECT existing_dev)
       )
     ),
-    lease:= 'Rent',
-    size:= 12000,
-    featured:=true,
-    bedrooms:= 8,
-    bathrooms := 5,
+    lease:= '${lease}',
+    size:= ${parseInt(size)},
+    featured:= ${featured},
+    bedrooms:= ${bedrooms},
+    bathrooms := ${bathrooms},
     buttons := {
-    (insert properties::button{text:='Book  A Viewing', url:=''}),
-    (insert properties::button{text:='Call', url:=''}),
-    (insert properties::button{text:='Message', url:=''}),
+    (insert properties::button{text:='Book  A Viewing', url:='${urls[0]}'}),
+    (insert properties::button{text:='Call', url:='${urls[1]}'}),
+    (insert properties::button{text:='Message', url:='${urls[2]}'}),
     },
-    images := {"1-01.webp", "1-02.webp", "1-03.webp"}
-  };
-  INSERT properties::SingleProperty{
-    propertyType := (
-      WITH existing_type := (
-        SELECT properties::PropertyType
-        FILTER properties::PropertyType.name = "Villa"
-      )
-      SELECT (
-        INSERT properties::PropertyType {name := "Villa"}
-        UNLESS CONFLICT ON .name
-        ELSE (SELECT existing_type)
-      )
-    ),
-    price:= 35000000,
-    excerpt:= 'Ultra-luxury waterfront villas with private beach access and panoramic views of the skyline',
-    propertyArea := (
-      WITH existing_area := (
-        SELECT properties::PropertyArea
-        FILTER properties::PropertyArea.name = "Palm Jumeirah, Dubai"
-      )
-      SELECT (
-        INSERT properties::PropertyArea {name := "Palm Jumeirah, Dubai"}
-        UNLESS CONFLICT ON .name
-        ELSE (SELECT existing_area)
-      )
-    ),
-    developer := (
-      WITH existing_dev := (
-        SELECT properties::developer
-        FILTER properties::developer.name = "sodic"
-      )
-      SELECT (
-        INSERT properties::developer { name := "sodic"}
-        UNLESS CONFLICT ON .name
-        ELSE (SELECT existing_dev)
-      )
-    ),
-    lease:= 'Rent',
-    size:= 15000,
-    featured:=true,
-    bedrooms:= 5,
-    bathrooms := 3,
-    buttons := {
-    (insert properties::button{text:='Book  A Viewing', url:=''}),
-    (insert properties::button{text:='Call', url:=''}),
-    (insert properties::button{text:='Message', url:=''}),
-    },
-    images := {"2-01.webp", "2-02.webp", "2-03.webp"}
-  };
-  INSERT properties::SingleProperty{
-    propertyType := (
-      WITH existing_type := (
-        SELECT properties::PropertyType
-        FILTER properties::PropertyType.name = "Villa"
-      )
-      SELECT (
-        INSERT properties::PropertyType {name := "Villa"}
-        UNLESS CONFLICT ON .name
-        ELSE (SELECT existing_type)
-      )
-    ),
-    price:= 7500000,
-    excerpt:= 'Ultra-luxury waterfront villas with private beach access and panoramic views of the skyline.',
-    propertyArea := (
-      WITH existing_area := (
-        SELECT properties::PropertyArea
-        FILTER properties::PropertyArea.name = "Palm Jumeirah, Dubai"
-      )
-      SELECT (
-        INSERT properties::PropertyArea {name := "Palm Jumeirah, Dubai"}
-        UNLESS CONFLICT ON .name
-        ELSE (SELECT existing_area)
-      )
-    ),
-    developer := (
-      WITH existing_dev := (
-        SELECT properties::developer
-        FILTER properties::developer.name = "sodic"
-      )
-      SELECT (
-        INSERT properties::developer { name := "sodic"}
-        UNLESS CONFLICT ON .name
-        ELSE (SELECT existing_dev)
-      )
-    ),
-    lease:= 'Rent',
-    size:= 8500,
-    featured:=true,
-    bedrooms:= 5,
-    bathrooms := 2,
-    buttons := {
-    (insert properties::button{text:='Book  A Viewing', url:=''}),
-    (insert properties::button{text:='Call', url:=''}),
-    (insert properties::button{text:='Message', url:=''}),
-    },
-    images := {"3-01.webp", "3-02.webp", "3-03.webp"}
+    images := {'${images[0]}', '${images[1]}', '${images[2]}'}
   };
 `;
 
 module.exports = {
-    insertUserQuery,
+  insertUserQuery,
 };

@@ -37,5 +37,8 @@ module properties {
     bathrooms: int16;
     multi images: str;
     multi buttons: button;
+    REQUIRED PROPERTY created_at -> datetime {
+        default := (datetime_current());
+    };
   }
 };
