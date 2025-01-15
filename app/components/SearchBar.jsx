@@ -11,16 +11,12 @@ function SearchBar({ handler, data }) {
     setValue("");
   };
   const handleSearch = () => {
+    const convertToString = value => { if (typeof value === 'object' && value !== null) { return JSON.stringify(value); } return value.toString(); };
     if (inputValue) {
       handler(
         data.filter(
-          post =>
-            post.title
-              .toLowerCase()
-              .includes(inputValue.toLowerCase()) ||
-            post.excerpt
-              .toLowerCase()
-              .includes(inputValue.toLowerCase())
+          item =>
+            Object.values(item).some(value => convertToString(value).toLowerCase().includes(inputValue.toLowerCase()))
         )
       );
     } else {
@@ -63,16 +59,16 @@ function SearchBar({ handler, data }) {
             placeholder='Search'
             type='text'
             name='key'
-            value={inputValue || ""}
-            onChange={handleChange}
-            onKeyDown={handleKeyPress}
+            value={ inputValue || "" }
+            onChange={ handleChange }
+            onKeyDown={ handleKeyPress }
           />
-          {inputValue?.length > 0 && (
+          { inputValue?.length > 0 && (
             <XCircle
               className='text-neutral-300 cursor-pointer'
-              onClick={handleClear}
+              onClick={ handleClear }
             />
-          )}
+          ) }
         </label>
         <button
           type='submit'

@@ -33,7 +33,7 @@ function Property({ data }) {
             <Link
               href={ button.url ? button.url : "" }
               className='bg-gold w-full text-white p-3 text-center'
-              Key={ i }>
+              key={ i }>
               { button.text }
             </Link>
           )) }
