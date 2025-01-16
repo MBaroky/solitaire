@@ -5,6 +5,10 @@ const client = createClient();
 
 const clearDatabaseQuery = 'DELETE properties::SingleProperty;';
 
+const clearDatabaseQuery1 = 'DELETE properties::PropertyType;';
+const clearDatabaseQuery2 = 'DELETE properties::developer;';
+const clearDatabaseQuery3 = 'DELETE properties::PropertyArea;';
+
 async function seed() {
   const query = insertPropertyQuery(
     'Rent', // lease = 'Rent'
@@ -82,6 +86,9 @@ async function seed() {
   try {
     console.log('Clearing database...');
     await client.execute(clearDatabaseQuery);
+    await client.execute(clearDatabaseQuery1);
+    await client.execute(clearDatabaseQuery2);
+    await client.execute(clearDatabaseQuery3);
     console.log('Database cleared.');
     await client.execute(query);
     await client.execute(query1);

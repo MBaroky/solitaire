@@ -9,19 +9,19 @@ function Rent() {
   const [loading, setLoading] = useState(false);
   const [propsList, setPropsList] = useState([]);
   const [allProps, setAllProps] = useState([]);
-  useEffect(() => {
-    //create the abort controller
-    let controller = new AbortController();
-    setLoading(true);
-    fetch("/api/properties", { signal: controller.signal })
-      .then(res => res.json())
-      .then(data => {
-        const forRent = data.filter(prop => prop.lease === "rent");
-        setPropsList(forRent);
-        setAllProps(forRent);
-        setLoading(false);
-      });
-  }, []);
+  // useEffect(() => {
+  //   //create the abort controller
+  //   let controller = new AbortController();
+  //   setLoading(true);
+  //   fetch("/api/properties", { signal: controller.signal })
+  //     .then(res => res.json())
+  //     .then(data => {
+  //       const forRent = data.filter(prop => prop.lease === "rent");
+  //       setPropsList(forRent);
+  //       setAllProps(forRent);
+  //       setLoading(false);
+  //     });
+  // }, []);
   return (
     <>
       { loading ? (
@@ -30,7 +30,7 @@ function Rent() {
 
         <div className='w-full bg-background'>
           <div className='w-full max-w-container mx-auto'>
-            <PropertyBar setPropsList={ setPropsList } allProps={ allProps } />
+            <PropertyBar lease="rent" setPropsList={ setPropsList } allProps={ allProps } />
             <>
               { propsList && (
                 <Pagination

@@ -9,19 +9,20 @@ function Buy() {
     const [loading, setLoading] = useState(false);
     const [propsList, setPropsList] = useState([]);
     const [allProps, setAllProps] = useState([]);
-    useEffect(() => {
-        //create the abort controller
-        setLoading(true);
-        let controller = new AbortController();
-        fetch("/api/properties", { signal: controller.signal })
-            .then(res => res.json())
-            .then(data => {
-                const forSale = data.filter(prop => prop.lease === "buy");
-                setPropsList(forSale);
-                setAllProps(forSale);
-                setLoading(false);
-            });
-    }, []);
+
+    // useEffect(() => {
+    //     //create the abort controller
+    //     setLoading(true);
+    //     let controller = new AbortController();
+    //     fetch("/api/properties", { signal: controller.signal })
+    //         .then(res => res.json())
+    //         .then(data => {
+    //             const forSale = data.filter(prop => prop.lease === "buy");
+    //             setPropsList(forSale);
+    //             setAllProps(forSale);
+    //             setLoading(false);
+    //         });
+    // }, []);
     return (
         <>
             { loading ? (
@@ -30,7 +31,7 @@ function Buy() {
 
                 <div className='w-full bg-background'>
                     <div className='w-full max-w-container mx-auto'>
-                        <PropertyBar setPropsList={ setPropsList } allProps={ allProps } />
+                        <PropertyBar lease="buy" setPropsList={ setPropsList } allProps={ allProps }  />
                         <>
                             { propsList && (
                                 <Pagination
