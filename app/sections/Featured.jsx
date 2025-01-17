@@ -47,8 +47,8 @@ function Featured() {
             slidesPerView={ 2 }
             autoplay={ { delay: 5000 } }
             navigation={ {
-              nextEl: ".swiper-button-next",
-              prevEl: ".swiper-button-prev",
+              nextEl: ".featured-swiper-button-next",
+              prevEl: ".featured-swiper-button-prev",
             } }
             // watchOverflow = {false}
             onSlideChange={ onSlideChange }
@@ -66,13 +66,13 @@ function Featured() {
           </Swiper>
           <div className='max-w-container w-full mx-auto relative'>
             <div className='custom-nav brightness-0 absolute top-0 left-0  invert mt-10 w-44 flex flex-row gap-5 justify-start z-50 '>
-              <button className="after:hidden after:max-w-0 swiper-button-next !pointer-events-auto">
-
-                <ArrowRight className=' min-h-16 min-w-16 p-3 rounded-full border border-white'></ArrowRight>
-              </button>
-              <button className="after:hidden after:max-w-0 swiper-button-prev !pointer-events-auto">
+              <button className="after:hidden after:max-w-0 featured-swiper-button-prev !pointer-events-auto">
 
                 <ArrowLeft className=' min-h-16 min-w-16 p-3 rounded-full border border-white'></ArrowLeft>
+              </button>
+              <button className="after:hidden after:max-w-0 featured-swiper-button-next !pointer-events-auto">
+
+                <ArrowRight className=' min-h-16 min-w-16 p-3 rounded-full border border-white'></ArrowRight>
               </button>
             </div>
           </div>
