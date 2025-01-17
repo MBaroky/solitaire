@@ -2,20 +2,25 @@
 import React, { Suspense, useEffect } from 'react'
 import SearchBar from './SearchBar'
 import Filters from './Filters'
+import { useState } from 'react';
 
-function PropertyBar({ setPropsList, allProps, lease }) {
+function PropertyBar({ setPropsList, lease, setLoading }) {
+    const [allProps, setAllProps] = useState([]);
     const handleFilterChange = async (filters) => {
+        setLoading(true);
         const queryParams = new URLSearchParams(filters).toString();
         const response = await fetch(`/api/properties?${queryParams}`);
         const data = await response.json();
         setPropsList(data.filter(prop => prop.lease === lease));
+        setAllProps(data.filter(prop => prop.lease === lease));
+        setLoading(false);
     };
     useEffect(() => {
         handleFilterChange()
     },[])
 
     return (
-        <div className="flex gap-3">
+        <div className="flex gap-3 max-w-container mx-auto w-full pt-5 border-b border-gray-200">
             <Suspense>
                 <SearchBar handler={ setPropsList } data={ allProps } />
             </Suspense>
