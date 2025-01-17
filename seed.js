@@ -65,7 +65,7 @@ async function seed() {
     '8',
     '3',
     ['', '', ''],
-    ['3-01.webp', '3-02.webp', '3-03.webp']
+    ['3-02.webp', '3-03.webp', '3-01.webp']
   );
 
   const query4 = insertPropertyQuery(
@@ -82,6 +82,20 @@ async function seed() {
     ['', '', ''],
     ['4-01.jpg', '4-02.jpg', '4-03.jpg']
   );
+  const query5 = insertPropertyQuery(
+    'Buy',
+    "Apartment",
+    '13,300,000',
+    `Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut, nulla ea. Dolores molestiae praesentium enim, ad veritatis minima officiis, voluptatibus, nobis magnam minus saepe ullam quam? Et atque vitae repellendus.`,
+    "Sheikh zayed st. Abu Dhabi",
+    '20000',
+    "sodic ",
+    true,
+    '6',
+    '2',
+    ['', '', ''],
+    ['1-03.webp', '1-02.webp', '1-01.webp']
+  );
 
   try {
     console.log('Clearing database...');
@@ -95,6 +109,7 @@ async function seed() {
     await client.execute(query2);
     await client.execute(query3);
     await client.execute(query4);
+    await client.execute(query5);
     console.log('Data inserted successfully');
   } catch (err) {
     console.error('Error inserting data:', err);

@@ -24,7 +24,6 @@ function Featured() {
   }, []);
   const onSlideChange = swiper => {
     console.log("slide change", swiper.activeIndex);
-
   }
   // TODO: Add a loading state
   // TODO: solve the arrow navigation issue
@@ -40,11 +39,12 @@ function Featured() {
           <Swiper
             className='w-full featured-slider -mx-[50px]'
             modules={ [Navigation, Autoplay] }
-            loop={true}
+            // loop={true}
             centeredSlides={ true }
-            // centeredSlidesBounds={ true }
+            centeredSlidesBounds={ true }
             spaceBetween={ 50 }
             slidesPerView={ 2 }
+            initialSlide={ 1 }
             autoplay={ { delay: 5000 } }
             navigation={ {
               nextEl: ".featured-swiper-button-next",
@@ -52,7 +52,7 @@ function Featured() {
             } }
             // watchOverflow = {false}
             onSlideChange={ onSlideChange }
-            onSwiper={ swiper => console.log(swiper) }>
+            onSwiper={ swiper => swiper.autoplay.start() }>
             { propsList &&
               propsList.map(prop => (
                 <SwiperSlide className='' key={ prop.id }>
@@ -66,11 +66,11 @@ function Featured() {
           </Swiper>
           <div className='max-w-container w-full mx-auto relative'>
             <div className='custom-nav brightness-0 absolute top-0 left-0  invert mt-10 w-44 flex flex-row gap-5 justify-start z-50 '>
-              <button className="after:hidden after:max-w-0 featured-swiper-button-prev !pointer-events-auto">
+              <button className="after:hidden after:max-w-0 featured-swiper-button-prev">
 
                 <ArrowLeft className=' min-h-16 min-w-16 p-3 rounded-full border border-white'></ArrowLeft>
               </button>
-              <button className="after:hidden after:max-w-0 featured-swiper-button-next !pointer-events-auto">
+              <button className="after:hidden after:max-w-0 featured-swiper-button-next">
 
                 <ArrowRight className=' min-h-16 min-w-16 p-3 rounded-full border border-white'></ArrowRight>
               </button>
