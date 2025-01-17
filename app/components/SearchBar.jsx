@@ -25,7 +25,7 @@ function SearchBar({ handler, data }) {
   };
   useEffect(() => {
     handleSearch();
-  }, [inputValue]);
+  }, [inputValue, data]);
 
   //   using query
   useEffect(() => {
