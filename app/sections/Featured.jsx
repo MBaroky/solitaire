@@ -16,14 +16,16 @@ import { ArrowLeft, ArrowRight } from "lucide-react";
 function Featured() {
   const [propsList, setPropsList] = useState([]);
   useEffect(() => {
-    //create the abort controller
-    let controller = new AbortController();
-    fetch("/api/properties", { signal: controller.signal })
+    fetch("/api/properties")
       .then(res => res.json())
       .then(data => {
         setPropsList(data.filter(prop => prop.featured === true));
       });
   }, []);
+  const onSlideChange = swiper => {
+    console.log("slide change", swiper.activeIndex);
+
+  }
   // TODO: Add a loading state
   // TODO: solve the arrow navigation issue
   return (
@@ -37,17 +39,19 @@ function Featured() {
         <div className='relative flex flex-col max-w-full featured-slider-wrapper overflow-x-clip'>
           <Swiper
             className='w-full featured-slider -mx-[50px]'
-            modules={ [Navigation] }
-            // loop={true}
+            modules={ [Navigation, Autoplay] }
+            loop={true}
             centeredSlides={ true }
-            centeredSlidesBounds={ true }
+            // centeredSlidesBounds={ true }
             spaceBetween={ 50 }
             slidesPerView={ 2 }
+            autoplay={ { delay: 5000 } }
             navigation={ {
               nextEl: ".swiper-button-next",
               prevEl: ".swiper-button-prev",
             } }
-            onSlideChange={ () => console.log("slide change") }
+            // watchOverflow = {false}
+            onSlideChange={ onSlideChange }
             onSwiper={ swiper => console.log(swiper) }>
             { propsList &&
               propsList.map(prop => (
@@ -55,15 +59,21 @@ function Featured() {
                   <img
                     className='aspect-video object-cover w-full'
                     src={ `/images/properties/${prop.images[0]}` }
-                    alt={ prop.title }
+                    alt={ prop.images[0] }
                   />
                 </SwiperSlide>
               )) }
           </Swiper>
           <div className='max-w-container w-full mx-auto relative'>
             <div className='custom-nav brightness-0 absolute top-0 left-0  invert mt-10 w-44 flex flex-row gap-5 justify-start z-50 '>
-              <ArrowRight className='swiper-button-next min-h-16 min-w-16 p-3 rounded-full border border-white'></ArrowRight>
-              <ArrowLeft className='swiper-button-prev min-h-16 min-w-16 p-3 rounded-full border border-white'></ArrowLeft>
+              <button className="after:hidden after:max-w-0 swiper-button-next !pointer-events-auto">
+
+                <ArrowRight className=' min-h-16 min-w-16 p-3 rounded-full border border-white'></ArrowRight>
+              </button>
+              <button className="after:hidden after:max-w-0 swiper-button-prev !pointer-events-auto">
+
+                <ArrowLeft className=' min-h-16 min-w-16 p-3 rounded-full border border-white'></ArrowLeft>
+              </button>
             </div>
           </div>
           <h2 className='text-heading-1 w-full absolute left-0 top-[50%] translate-y-[-50%] text-white font-gerbil z-30 text-center drop-shadow-lg pointer-events-none'>
