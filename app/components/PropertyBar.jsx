@@ -1,5 +1,5 @@
 "use client"
-import React, { Suspense, useEffect } from 'react'
+import React, { Suspense } from 'react'
 import SearchBar from './SearchBar'
 import Filters from './Filters'
 import { useState } from 'react';
@@ -15,9 +15,6 @@ function PropertyBar({ setPropsList, lease, setLoading }) {
         setAllProps(data.filter(prop => prop.lease === lease));
         setLoading(false);
     };
-    useEffect(() => {
-        handleFilterChange()
-    },[])
 
     return (
         <div className="flex gap-3 max-w-container mx-auto w-full pt-5 border-b border-gray-200">
