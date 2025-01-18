@@ -15,7 +15,7 @@ function PriceFilter({ onFilterChange, properties, setProperties }) {
       setMinPrice(Math.min(...returnPricesList()));
       setMaxPrice(Math.max(...returnPricesList()));
     }
-  }, [ properties ]);
+  }, [ isOpen, properties ]);
   useEffect(() => {
     setProperties(properties.filter(prop => parseInt(prop.price) >= minPrice && parseInt(prop.price) <= maxPrice));
   }, [ minPrice, maxPrice]);
@@ -31,31 +31,37 @@ function PriceFilter({ onFilterChange, properties, setProperties }) {
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
-
+// TODO: format the numbers for better ux
   return (
     <div className='relative'>
       <button onClick={toggleMenu} className='bg-white border-0 items-center flex flex-row flex-grow gap-3 px-3 outline-none capitalize py-2'>
         Price <ChevronDown />
       </button>
       {isOpen && (
-        <div className='absolute bg-white shadow-lg p-3 mt-2 rounded'>
+        <div className='absolute bg-background shadow-lg p-3 mt-2 rounded'>
           <div className='flex flex-row gap-3'>
+            <div>
+              <label htmlFor="minPrice">Min Price</label>
             <input
               type="number"
               name="minPrice"
-              placeholder="Min Price"
+              placeholder="Not set"
               value={minPrice}
               onChange={handleMinChange}
-              className='bg-white border-0 items-center flex flex-row flex-grow gap-3 px-3 outline-none'
+              className='bg-white border border-bg-neutral-300 items-center flex flex-row flex-grow gap-3 p-3 outline-none'
             />
+            </div>
+            <div>
+              <label htmlFor="maxPrice">Max Price</label>
             <input
               type="number"
               name="maxPrice"
-              placeholder="Max Price"
+              placeholder="Not set"
               value={maxPrice}
               onChange={handleMaxChange}
-              className='bg-white border-0 items-center flex flex-row flex-grow gap-3 px-3 outline-none'
+              className='bg-white border border-bg-neutral-300 items-center flex flex-row flex-grow gap-3 p-3 outline-none'
             />
+            </div>
           </div>
         </div>
       )}

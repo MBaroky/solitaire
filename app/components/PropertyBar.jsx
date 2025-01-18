@@ -6,10 +6,13 @@ import { useState } from 'react';
 
 function PropertyBar({ setPropsList, lease, setLoading }) {
     const [allProps, setAllProps] = useState([]);
+    // handleFilterChange is a function that takes in filters and sets the properties list
     const handleFilterChange = async (filters) => {
         setLoading(true);
         const queryParams = new URLSearchParams(filters).toString();
-        const response = await fetch(`/api/properties?${queryParams}`);
+        const path = `/api/properties?${queryParams}`;
+        console.log(path);
+        const response = await fetch(path);
         const data = await response.json();
         setPropsList(data.filter(prop => prop.lease === lease));
         setAllProps(data.filter(prop => prop.lease === lease));

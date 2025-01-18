@@ -18,7 +18,7 @@ function DeveloperFilter({ onFilterChange }) {
     const { value } = e.target;
     setDeveloper(value);
     if (onFilterChange) {
-      onFilterChange({ developer: value });
+      onFilterChange(e);
     }
   };
 

@@ -18,7 +18,7 @@ function PropertyTypeFilter({ onFilterChange }) {
     const { value } = e.target;
     setPropertyType(value);
     if (onFilterChange) {
-      onFilterChange({ propertyType: value });
+      onFilterChange(e);
     }
   };
 
