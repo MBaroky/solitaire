@@ -1,7 +1,7 @@
 "use client"
 import { ChevronDown } from 'lucide-react';
 import React, { useState, useEffect } from 'react';
-
+// TODO: revise the code and change the dependency on the open state
 function BedsBathsFilter({ onFilterChange, properties }) {
   const [bedrooms, setBedrooms] = useState('');
   const [bathrooms, setBathrooms] = useState('');

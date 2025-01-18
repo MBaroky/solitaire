@@ -32,6 +32,7 @@ function PriceFilter({ onFilterChange, properties, setProperties }) {
     setIsOpen(!isOpen);
   };
 // TODO: format the numbers for better ux
+// TODO: revise the code and change the dependency on the open state
   return (
     <div className='relative'>
       <button onClick={toggleMenu} className='bg-white border-0 items-center flex flex-row flex-grow gap-3 px-3 outline-none capitalize py-2'>
