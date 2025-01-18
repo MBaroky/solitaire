@@ -84,7 +84,7 @@ function Featured() {
         <div className='relative z-50 max-w-40 mx-auto flex justify-center md:-mt-10'>
           <CustomButton
             className=''
-            url='/featured'
+            url='/Featured'
             text='Discover All'
           />
         </div>

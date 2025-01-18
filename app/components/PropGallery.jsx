@@ -28,7 +28,7 @@ function PropGallery({ data }) {
         <>
             <div>
                 <img
-                    className='aspect-[0.65] object-cover'
+                    className='aspect-[0.65] object-cover cursor-pointer'
                     src={ images[0] }
                     alt=''
                     onClick={ () => openLightbox(0) }
@@ -36,13 +36,13 @@ function PropGallery({ data }) {
             </div>
             <div>
                 <img
-                    className='aspect-[1.3] object-cover'
+                    className='aspect-[1.3] object-cover cursor-pointer'
                     src={ images[1] }
                     alt=''
                     onClick={ () => openLightbox(1) }
                 />
                 <img
-                    className='aspect-[1.3] object-cover'
+                    className='aspect-[1.3] object-cover cursor-pointer'
                     src={ images[2] }
                     alt=''
                     onClick={ () => openLightbox(2) }

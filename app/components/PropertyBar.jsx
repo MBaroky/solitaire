@@ -19,9 +19,9 @@ function PropertyBar({ setPropsList, lease, setLoading }) {
     return (
         <div className="flex gap-3 max-w-container mx-auto w-full pt-5 border-b border-gray-200">
             <Suspense>
-                <SearchBar handler={ setPropsList } data={ allProps } />
+                <SearchBar className="flex-grow" handler={ setPropsList } data={ allProps } />
             </Suspense>
-            <Filters onFilterChange={handleFilterChange} />
+            <Filters onFilterChange={handleFilterChange} properties={allProps} setProperties={setPropsList} />
         </div>
     )
 }
