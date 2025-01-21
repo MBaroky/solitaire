@@ -5,6 +5,7 @@ import DeveloperFilter from './filters/DeveloperFilter';
 import PriceFilter from './filters/PriceFilter';
 import BedsBathsFilter from './filters/BedsBathsFilter';
 import SizeFilter from './filters/SizeFilter';
+import LocationFilter from './filters/LocationFilter';
 
 function Filters({ onFilterChange, properties, setProperties }) {
   const [filters, setFilters] = useState({
@@ -27,6 +28,8 @@ function Filters({ onFilterChange, properties, setProperties }) {
   }
   return (
     <div className='flex flex-row py-5 items-stretch gap-3'>
+
+      {/* <LocationFilter onFilterChange={handleChange} /> */}
       <PropertyTypeFilter onFilterChange={handleChange} />
       <PriceFilter onFilterChange={onFilterChange} properties={properties} setProperties={setProperties} />
       <BedsBathsFilter onFilterChange={handleChange} properties={properties}  />

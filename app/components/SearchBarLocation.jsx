@@ -1,9 +1,9 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { MoveUpRight, Search, XCircle } from "lucide-react";
+import { MapPin, MapPinIcon, MoveUpRight, Search, XCircle } from "lucide-react";
 import { useSearchParams } from "next/navigation";
 
-function SearchBar({ handler, data }) {
+function SearchBarLocation({ handler, data }) {
   const searchParams = useSearchParams();
   const searchQuery = searchParams?.get("q");
   const [inputValue, setValue] = useState(searchQuery);
@@ -11,17 +11,11 @@ function SearchBar({ handler, data }) {
     setValue("");
   };
   const handleSearch = () => {
-    const convertToString = value => {
-      if (typeof value === 'object' && value !== null) {
-         return JSON.stringify(value);
-      }
-      return value.toString();
-    };
     if (inputValue) {
       handler(
         data?.filter(
           item =>
-            Object.values(item).some(value => convertToString(value).toLowerCase().includes(inputValue.toLowerCase()))
+            item.address && item.address.toLowerCase().includes(inputValue.toLowerCase())
         )
       );
       console.log(inputValue);
@@ -55,14 +49,13 @@ function SearchBar({ handler, data }) {
   return (
     <div className="flex-grow">
       <div
-        className='flex flex-row py-5 items-stretch min-w-full'>
+        className='flex flex-row items-stretch min-w-full'>
         <label
-          className='bg-white border-0 items-center flex flex-row flex-grow gap-3 px-3'
+          className='bg-white border-0 items-center flex flex-row flex-grow gap-3  px-3'
           htmlFor=''>
-          <Search />
           <input
             className='bg-transparent border-0 flex-grow outline-none'
-            placeholder='Search'
+            placeholder='Location'
             type='text'
             name='key'
             value={ inputValue || "" }
@@ -75,15 +68,12 @@ function SearchBar({ handler, data }) {
               onClick={ handleClear }
             />
           ) }
+          <MapPinIcon className="text-neutral-400" />
         </label>
-        <button
-          type='submit'
-          className='bg-gold aspect-square p-2 text-white'>
-          <MoveUpRight />
-        </button>
+
       </div>
     </div>
   );
 }
 
-export default SearchBar;
+export default SearchBarLocation;

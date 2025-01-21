@@ -9,6 +9,7 @@ export async function GET(req, res) {
   const bedrooms = url.searchParams.get('bedrooms');
   const bathrooms = url.searchParams.get('bathrooms');
   const size = url.searchParams.get('size');
+  const location = url.searchParams.get('location');
 
   const items = await client.query(`\
     select properties::SingleProperty {
@@ -30,13 +31,15 @@ export async function GET(req, res) {
       (<str>$developer = '' OR .developer.name = <str>$developer) and
       (<int16>$bedrooms = 0 OR .bedrooms = <int16>$bedrooms) and
       (<int16>$bathrooms = 0 OR .bathrooms = <int16>$bathrooms) and
-      (<int32>$size = 0 OR .size = <int32>$size)
+      (<int32>$size = 0 OR .size = <int32>$size) and
+      (<str>$location = '' OR .propertyArea.name = <str>$location)
     );`, {
     propertyType: propertyType || '',
     developer: developer || '',
     bedrooms: bedrooms ? parseInt(bedrooms) : 0,
     bathrooms: bathrooms ? parseInt(bathrooms) : 0,
-    size: size ? parseInt(size) : 0
+    size: size ? parseInt(size) : 0,
+    location: location || ''
   });
 
   return new Response(JSON.stringify(items), {
@@ -50,6 +53,16 @@ export async function GET_SIZES(req, res) {
     select distinct properties::SingleProperty.size;`);
 
   return new Response(JSON.stringify(sizes), {
+    status: 200,
+    headers: { 'Content-Type': 'application/json' },
+  });
+}
+
+export async function GET_LOCATIONS(req, res) {
+  const locations = await client.query(`\
+    select distinct properties::SingleProperty.propertyArea.name;`);
+
+  return new Response(JSON.stringify(locations), {
     status: 200,
     headers: { 'Content-Type': 'application/json' },
   });

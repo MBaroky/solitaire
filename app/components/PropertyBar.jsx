@@ -3,6 +3,7 @@ import React, { Suspense, useEffect } from 'react'
 import SearchBar from './SearchBar'
 import Filters from './Filters'
 import { useState } from 'react';
+import SearchBarLocation from './SearchBarLocation';
 
 function PropertyBar({ setPropsList, lease, setLoading }) {
     const [allProps, setAllProps] = useState([]);
