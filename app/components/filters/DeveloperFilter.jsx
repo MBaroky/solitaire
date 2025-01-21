@@ -8,8 +8,17 @@ function DeveloperFilter({ onFilterChange }) {
   useEffect(() => {
     async function fetchDevelopers() {
       const response = await fetch('/api/developers');
-      const data = await response.json();
-      setDevelopers(data);
+      if (!response.ok) {
+        throw new Error('Failed to fetch data');
+      }
+      try {
+        const data = await response.json();
+        setDevelopers(data);
+      }catch (error) {
+        console.error(error.message);
+      }
+      // const data = await response.json();
+      // setDevelopers(data);
     }
     fetchDevelopers();
   }, []);

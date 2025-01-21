@@ -8,8 +8,15 @@ function PropertyTypeFilter({ onFilterChange }) {
   useEffect(() => {
     async function fetchPropertyTypes() {
       const response = await fetch('/api/propertyTypes');
-      const data = await response.json();
-      setPropertyTypes(data);
+      if (!response.ok) {
+        throw new Error('Failed to fetch data');
+      }
+      try {
+        const data = await response.json();
+        setPropertyTypes(data);
+      }catch(error){
+        console.error(error)
+      }
     }
     fetchPropertyTypes();
   }, []);

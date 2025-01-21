@@ -1,6 +1,7 @@
 "use client"
 import { ChevronDown } from 'lucide-react';
 import React, { useState, useEffect } from 'react';
+import { useRef } from 'react';
 // TODO: revise the code and change the dependency on the open state
 function BedsBathsFilter({ onFilterChange, properties }) {
   const [bedrooms, setBedrooms] = useState('');
@@ -12,26 +13,28 @@ function BedsBathsFilter({ onFilterChange, properties }) {
   useEffect(() => {
 
       const uniqueBedrooms = [...new Set(properties.map(prop => parseInt(prop.bedrooms)))];
-      console.log(uniqueBedrooms);
+
+
       const uniqueBathrooms = [...new Set(properties.map(prop => parseInt(prop.bathrooms)))];
+
       setBedroomOptions(uniqueBedrooms);
       setBathroomOptions(uniqueBathrooms);
 
-  }, [isOpen, properties]);
+  }, [ properties]);
 
   const handleBedroomsChange = (e) => {
-    const value = e.target.value;
+    const {value} = e.target;
     setBedrooms(value);
     if (onFilterChange) {
-      onFilterChange({ bedrooms: parseInt(value), bathrooms });
+      onFilterChange(e);
     }
   };
 
   const handleBathroomsChange = (e) => {
-    const value = e.target.value;
+    const {value} = e.target;
     setBathrooms(value);
     if (onFilterChange) {
-      onFilterChange({ bedrooms, bathrooms: parseInt(value) });
+      onFilterChange(e);
     }
   };
 
@@ -39,8 +42,17 @@ function BedsBathsFilter({ onFilterChange, properties }) {
     setIsOpen(!isOpen);
   };
 
+  const componentRef = useRef();
+  // close on clicking away
+  useEffect(() => {
+    document.addEventListener("click", e => {
+      if (!componentRef.current.contains(e.target)) {
+        setIsOpen(false);
+      }
+    });
+  }, []);
   return (
-    <div className='relative'>
+    <div className='relative' ref={componentRef}>
       <button onClick={toggleMenu} className='bg-white border-0 items-center flex flex-row flex-grow gap-3 px-3 outline-none capitalize py-2'>
         Beds/Baths <ChevronDown />
       </button>

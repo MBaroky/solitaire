@@ -1,6 +1,6 @@
 "use client"
 import { ChevronDown } from 'lucide-react';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 function PriceFilter({ onFilterChange, properties, setProperties }) {
   const [minPrice, setMinPrice] = useState("");
@@ -15,17 +15,29 @@ function PriceFilter({ onFilterChange, properties, setProperties }) {
       setMinPrice(Math.min(...returnPricesList()));
       setMaxPrice(Math.max(...returnPricesList()));
     }
-  }, [ isOpen, properties ]);
-  useEffect(() => {
-    setProperties(properties.filter(prop => parseInt(prop.price) >= minPrice && parseInt(prop.price) <= maxPrice));
-  }, [ minPrice, maxPrice]);
+  }, [properties]);
+  // useEffect(() => {
+  //   setProperties(properties.filter(prop => parseInt(prop.price) >= minPrice && parseInt(prop.price) <= maxPrice));
+  // }, [ minPrice, maxPrice]);
 
+  const priceRef = useRef();
+  // close on clicking away
+  useEffect(() => {
+    document.addEventListener("click", e => {
+      if (!priceRef.current.contains(e.target)) {
+        setIsOpen(false);
+      }
+      // console.log(priceRef)
+    });
+  }, []);
   const handleMinChange = (e) => {
     setMinPrice(e.target.value);
+    setProperties(properties.filter(prop => parseInt(prop.price) >= minPrice && parseInt(prop.price) <= maxPrice));
   };
 
   const handleMaxChange = (e) => {
     setMaxPrice( e.target.value);
+    setProperties(properties.filter(prop => parseInt(prop.price) >= minPrice && parseInt(prop.price) <= maxPrice));
 };
 
   const toggleMenu = () => {
@@ -34,12 +46,12 @@ function PriceFilter({ onFilterChange, properties, setProperties }) {
 // TODO: format the numbers for better ux
 // TODO: revise the code and change the dependency on the open state
   return (
-    <div className='relative'>
+    <div className='relative' ref={priceRef}>
       <button onClick={toggleMenu} className='bg-white border-0 items-center flex flex-row flex-grow gap-3 px-3 outline-none capitalize py-2'>
         Price <ChevronDown />
       </button>
       {isOpen && (
-        <div className='absolute bg-background shadow-lg p-3 mt-2 rounded'>
+        <div className='absolute bg-background shadow-lg p-3 mt-2 rounded right-0 left-auto'>
           <div className='flex flex-row gap-3'>
             <div>
               <label htmlFor="minPrice">Min Price</label>

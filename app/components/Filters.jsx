@@ -28,7 +28,7 @@ function Filters({ onFilterChange, properties, setProperties }) {
     <div className='flex flex-row py-5 items-stretch gap-3'>
       <PropertyTypeFilter onFilterChange={handleChange} />
       <PriceFilter onFilterChange={onFilterChange} properties={properties} setProperties={setProperties} />
-      <BedsBathsFilter onFilterChange={onFilterChange} properties={properties}  />
+      <BedsBathsFilter onFilterChange={handleChange} properties={properties}  />
       <DeveloperFilter onFilterChange={handleChange} />
     </div>
   );

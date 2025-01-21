@@ -28,7 +28,7 @@ function Rent() {
         <div className='w-full bg-background'>
           <div className='w-full max-w-container mx-auto'>
             <>
-              { propsList && (
+              { propsList.length > 0 ? (
                 <Pagination
                   className={ `grid grid-cols-1 gap-5 my-5` }
                   perPage={ 3 }>
@@ -40,7 +40,7 @@ function Rent() {
                     );
                   }) }
                 </Pagination>
-              ) }
+              ):  <div className="text-xl text-center py-5">No properties found</div> }
             </>
           </div>
         </div>

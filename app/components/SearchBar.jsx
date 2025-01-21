@@ -11,14 +11,21 @@ function SearchBar({ handler, data }) {
     setValue("");
   };
   const handleSearch = () => {
-    const convertToString = value => { if (typeof value === 'object' && value !== null) { return JSON.stringify(value); } return value.toString(); };
+    const convertToString = value => {
+      if (typeof value === 'object' && value !== null) {
+         return JSON.stringify(value);
+      }
+      return value.toString();
+    };
     if (inputValue) {
       handler(
-        data.filter(
+        data?.filter(
           item =>
             Object.values(item).some(value => convertToString(value).toLowerCase().includes(inputValue.toLowerCase()))
         )
       );
+      console.log(inputValue);
+      console.log(data);
     } else {
       handler(data);
     }
@@ -46,7 +53,7 @@ function SearchBar({ handler, data }) {
     setValue(inputValue);
   };
   return (
-    <div>
+    <div className="flex-grow">
       <div
         // action=''
         className='flex flex-row py-5 items-stretch min-w-full'>
