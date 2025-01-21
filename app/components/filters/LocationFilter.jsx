@@ -1,4 +1,5 @@
 "use client"
+import { MapPin } from 'lucide-react';
 import React, { useState, useEffect } from 'react';
 
 function LocationFilter({ onFilterChange }) {
@@ -33,12 +34,16 @@ function LocationFilter({ onFilterChange }) {
   return (
     <>
 
-      <select name="location" value={location} onChange={handleLocationChange} className='bg-white border-0 items-center flex flex-row gap-3 px-5 outline-none capitalize'>
-        <option value="">Location</option>
+<label
+          className='bg-white border-0 items-center flex flex-row gap-3 px-3'
+          htmlFor=''>
+      <select name="location" value={location} onChange={handleLocationChange} className='bg-transparent border-0 outline-none appearance-none capitalize'>
+        <option value="">Locations</option>
         {locationOptions.map((option, index) => (
           <option className='hover:shadow-inner  hover:shadow-dark capitalize' key={index} value={option.name}>{option.name}</option>
         ))}
-      </select>
+      </select> <MapPin />
+      </label>
     </>
   );
 }
