@@ -7,7 +7,6 @@ import Link from "next/link";
 import React, { Suspense, useEffect, useState } from "react";
 // TODO: filter
 // TODO: sorting
-// [x]: pagination
 function Blog() {
   const screenSize = useScreenSize();
   const [posts, setPosts] = useState([]);
@@ -24,7 +23,6 @@ function Blog() {
         setLoading(false);
       });
   }, []);
-  // [x]: fix the responsive part on production
   return (
     <div className='w-full bg-background'>
       <div className='w-full max-w-container mx-auto'>

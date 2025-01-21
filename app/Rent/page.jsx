@@ -18,7 +18,6 @@ function Rent() {
     };
     fetchInitialProps();
   }, []);
-// TODO: show a message when there are no properties
   return (
     <>
       <PropertyBar lease="rent" setPropsList={ setPropsList } setLoading={setLoading} />

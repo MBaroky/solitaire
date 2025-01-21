@@ -26,7 +26,6 @@ function Buy() {
         fetchInitialProps();
         console.log(propsList)
     }, []);
-    // TODO: show a message when there are no properties
     return (
         <>
 

@@ -26,7 +26,6 @@ function Featured() {
     // console.log("slide change", swiper.activeIndex);
   }
   // TODO: Add a loading state
-  // [x]: solve the arrow navigation issue
   return (
     <div
       className='w-full bg-dark pt-20 bg-top bg-contain bg-no-repeat'

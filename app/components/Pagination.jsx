@@ -6,8 +6,6 @@ import { MoveLeft, MoveRight } from "lucide-react";
 function Pagination({ perPage = 6, children, className }) {
   const [currentPage, setCurrentPage] = useState(1);
   const [paginated, setPaginated] = useState({ children, perPage });
-  // [x]: next and prev buttons on more than 3 pages
-  // [x]: responsive perPage
   const handleClick = e => {
     setCurrentPage(e.target.value);
   };
