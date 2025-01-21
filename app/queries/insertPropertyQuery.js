@@ -1,5 +1,5 @@
 // queries.js
-const insertPropertyQuery = (lease = 'Rent', type = "Apartment", price, excerpt, area, size, developer, featured, bedrooms, bathrooms, urls = ['', '', ''], images = ['', '', '']) => `
+const insertPropertyQuery = (lease = 'Rent', type = "Apartment", price, excerpt, area, size, developer, featured, bedrooms, bathrooms, urls = ['', '', ''], images = ['', '', ''], tags) => `
 
 INSERT properties::SingleProperty{
     propertyType := (
@@ -47,7 +47,22 @@ INSERT properties::SingleProperty{
     (insert properties::button{text:='Call', url:='${urls[1]}'}),
     (insert properties::button{text:='Message', url:='${urls[2]}'}),
     },
-    images := {'${images[0]}', '${images[1]}', '${images[2]}'}
+    images := {'${images[0]}', '${images[1]}', '${images[2]}'},
+
+    tags := (
+      FOR tag IN (DISTINCT {${tags.map(tag => `'${tag.toLowerCase()}'`).join(', ')}})
+      UNION (
+        WITH existing_tag := (
+          SELECT properties::tag
+          FILTER properties::tag.name = tag
+        )
+        SELECT (
+          INSERT properties::tag {name := tag}
+          UNLESS CONFLICT ON .name
+          ELSE (SELECT existing_tag)
+        )
+      )
+    )
   };
 `;
 

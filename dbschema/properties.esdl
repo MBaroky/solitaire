@@ -21,6 +21,11 @@ module properties {
     text:str;
     url:str;
   }
+  type tag{
+    required name: str{
+        constraint exclusive;
+    }
+  }
 
   type SingleProperty {
     required price: int32;
@@ -35,6 +40,7 @@ module properties {
     featured: bool;
     bedrooms: int16;
     bathrooms: int16;
+    multi tags: tag;
     multi images: str;
     multi buttons: button;
     REQUIRED PROPERTY created_at -> datetime {

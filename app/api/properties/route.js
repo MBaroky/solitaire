@@ -25,6 +25,7 @@ export async function GET(req, res) {
       bedrooms,
       bathrooms,
       images,
+      tags:{name},
       buttons:{text, url},
     } filter (
       (<str>$propertyType = '' OR .propertyType.name = <str>$propertyType) and
@@ -48,22 +49,22 @@ export async function GET(req, res) {
   });
 }
 
-export async function GET_SIZES(req, res) {
-  const sizes = await client.query(`\
-    select distinct properties::SingleProperty.size;`);
+// export async function GET_SIZES(req, res) {
+//   const sizes = await client.query(`\
+//     select distinct properties::SingleProperty.size;`);
 
-  return new Response(JSON.stringify(sizes), {
-    status: 200,
-    headers: { 'Content-Type': 'application/json' },
-  });
-}
+//   return new Response(JSON.stringify(sizes), {
+//     status: 200,
+//     headers: { 'Content-Type': 'application/json' },
+//   });
+// }
 
-export async function GET_LOCATIONS(req, res) {
-  const locations = await client.query(`\
-    select distinct properties::SingleProperty.propertyArea.name;`);
+// export async function GET_LOCATIONS(req, res) {
+//   const locations = await client.query(`\
+//     select distinct properties::SingleProperty.propertyArea.name;`);
 
-  return new Response(JSON.stringify(locations), {
-    status: 200,
-    headers: { 'Content-Type': 'application/json' },
-  });
-}
+//   return new Response(JSON.stringify(locations), {
+//     status: 200,
+//     headers: { 'Content-Type': 'application/json' },
+//   });
+// }

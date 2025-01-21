@@ -8,6 +8,7 @@ const clearDatabaseQuery = 'DELETE properties::SingleProperty;';
 const clearDatabaseQuery1 = 'DELETE properties::PropertyType;';
 const clearDatabaseQuery2 = 'DELETE properties::developer;';
 const clearDatabaseQuery3 = 'DELETE properties::PropertyArea;';
+const clearDatabaseQuery4 = 'DELETE properties::tag;';
 
 async function seed() {
   const query = insertPropertyQuery(
@@ -22,7 +23,8 @@ async function seed() {
     '8', // bedrooms,
     '3', // bathrooms,
     ['', '', ''], // urls ['Book  A Viewing', 'Call', 'Message']
-    ['1-01.webp', '1-02.webp', '1-03.webp']// images
+    ['1-01.webp', '1-02.webp', '1-03.webp'],// images
+    ['Family-Friendly', 'Sea View', 'Beachfront'] //tags,
   );
   const query1 = insertPropertyQuery(
     'Rent',
@@ -36,7 +38,9 @@ async function seed() {
     '15',
     '5',
     ['', '', ''],
-    ['2-01.webp', '2-02.webp', '2-03.webp']
+
+    ['2-01.webp', '2-02.webp', '2-03.webp'],
+    ['Family-Friendly', 'Gated Community', 'Close to Metro'],
   );
   const query2 = insertPropertyQuery(
     'Rent',
@@ -50,7 +54,8 @@ async function seed() {
     '8',
     '3',
     ['', '', ''],
-    ['3-01.webp', '3-02.webp', '3-03.webp']
+    ['3-01.webp', '3-02.webp', '3-03.webp'],
+    ['Skyline View', 'Gated Community', 'Close to Metro'],
   );
 
   const query3 = insertPropertyQuery(
@@ -65,7 +70,8 @@ async function seed() {
     '8',
     '3',
     ['', '', ''],
-    ['3-02.webp', '3-03.webp', '3-01.webp']
+    ['3-02.webp', '3-03.webp', '3-01.webp'],
+    ['Green Spaces', 'Smart Home', 'Exclusive Community', 'High-Rise Living', 'Urban Living'],
   );
 
   const query4 = insertPropertyQuery(
@@ -80,7 +86,8 @@ async function seed() {
     '4',
     '1',
     ['', '', ''],
-    ['4-01.jpg', '4-02.jpg', '4-03.jpg']
+    ['4-01.jpg', '4-02.jpg', '4-03.jpg'],
+    ['Waterfront', 'Smart Home', 'Exclusive Community', 'Urban Living'],
   );
   const query5 = insertPropertyQuery(
     'Buy',
@@ -94,7 +101,8 @@ async function seed() {
     '6',
     '2',
     ['', '', ''],
-    ['1-03.webp', '1-02.webp', '1-01.webp']
+    ['1-03.webp', '1-02.webp', '1-01.webp'],
+    ['Skyline View', 'Smart Home',  'High-Rise Living'],
   );
 
   try {
@@ -103,6 +111,7 @@ async function seed() {
     await client.execute(clearDatabaseQuery1);
     await client.execute(clearDatabaseQuery2);
     await client.execute(clearDatabaseQuery3);
+    await client.execute(clearDatabaseQuery4);
     console.log('Database cleared.');
     await client.execute(query);
     await client.execute(query1);

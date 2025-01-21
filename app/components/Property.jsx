@@ -38,6 +38,11 @@ function Property({ data }) {
             </Link>
           )) }
         </div>
+        <div className="sr-only">
+          {data.tags?.map((tag, i) => (
+            <span key={i}>{tag.name}</span>
+          ))}
+        </div>
       </div>
     </div>
   );
