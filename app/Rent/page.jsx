@@ -12,15 +12,25 @@ function Rent() {
   useEffect(() => {
     const fetchInitialProps = async () => {
       const response = await fetch(`/api/properties?lease=rent`);
-      const initialProps = await response.json();
-      setPropsList(initialProps.filter(prop => prop.lease === 'rent'));
-      setLoading(false);
+      if (!response.ok) {
+        throw new Error('Failed to fetch properties');
+      }
+      try {
+        const initialProps = await response.json();
+        setPropsList(initialProps.filter(prop => prop.lease === 'rent'));
+        setLoading(false);
+      } catch (error) {
+        console.error(error.message);
+      }
+      // const initialProps = await response.json();
+      // setPropsList(initialProps.filter(prop => prop.lease === 'rent'));
+      // setLoading(false);
     };
     fetchInitialProps();
   }, []);
   return (
     <>
-      <PropertyBar lease="rent" setPropsList={ setPropsList } setLoading={setLoading} />
+      <PropertyBar lease="rent" setPropsList={ setPropsList } setLoading={ setLoading } />
       { loading ? (
         <div className='py-5' > <Loader /> </div>
       ) : (
@@ -39,7 +49,7 @@ function Rent() {
                     );
                   }) }
                 </Pagination>
-              ):  <div className="text-xl text-center py-5">No properties found</div> }
+              ) : <div className="text-xl text-center py-5">No properties found</div> }
             </>
           </div>
         </div>

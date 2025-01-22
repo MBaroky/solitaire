@@ -16,7 +16,7 @@ import { ArrowLeft, ArrowRight } from "lucide-react";
 function Featured() {
   const [propsList, setPropsList] = useState([]);
   useEffect(() => {
-    fetch("/api/properties")
+    fetch("api/properties")
       .then(res => res.json())
       .then(data => {
         setPropsList(data.filter(prop => prop.featured === true));

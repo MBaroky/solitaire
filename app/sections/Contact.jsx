@@ -15,18 +15,18 @@ export default function Contact({ layout }) {
     setLoading(true);
     const formData = new FormData(event.target);
 
+    const response = await fetch("/api/contact", {
+      method: "post",
+      body: formData,
+    });
+
+    if (!response.ok) {
+      // response not ok
+      console.log("falling over");
+      throw new Error(`response status: ${response.status}`);
+    }
     // call api
     try {
-      const response = await fetch("/api/contact", {
-        method: "post",
-        body: formData,
-      });
-
-      if (!response.ok) {
-        // response not ok
-        console.log("falling over");
-        throw new Error(`response status: ${response.status}`);
-      }
 
       // success
       const responseData = await response.json();
@@ -45,9 +45,8 @@ export default function Contact({ layout }) {
   return (
     <div className='w-fulll bg-background py-12'>
       <div
-        className={`w-full max-w-container grid grid-cols-1 ${
-          layout ? "lg:grid-cols-1" : "lg:grid-cols-2"
-        } mx-auto px-5`}>
+        className={ `w-full max-w-container grid grid-cols-1 ${layout ? "lg:grid-cols-1" : "lg:grid-cols-2"
+          } mx-auto px-5` }>
         <div className='px-5'>
           <h2 className='text-dark text-heading-1 font-gerbil'>
             Contact Us
@@ -61,17 +60,17 @@ export default function Contact({ layout }) {
           </p>
         </div>
         <div className='px-5 form-wrapper min-h-64 flex flex-col items-center justify-center'>
-          {loading ? (
+          { loading ? (
             <Loader />
           ) : (
             <>
-              {formSuccess ? (
-                <p className='text-gold font-gerbil'>{formSuccess}</p>
+              { formSuccess ? (
+                <p className='text-gold font-gerbil'>{ formSuccess }</p>
               ) : (
                 <>
-                  {/* FORM  */}
+                  {/* FORM  */ }
                   <form
-                    onSubmit={handleSubmit}
+                    onSubmit={ handleSubmit }
                     className='group mt-8 mb-2 w-full '
                     noValidate>
                     <div className='mb-4 flex flex-col w-full [&_input]:bg-transparent [&_input]:border-b [&_input]:border-dark [&_input]:mb-3 text-dark'>
@@ -81,20 +80,20 @@ export default function Contact({ layout }) {
                           required
                           id='form-name'
                           autoComplete='name'
-                          maxLength={50}
+                          maxLength={ 50 }
                           size='lg'
                           name='name'
                           placeholder=''
                           className='peer invalid:[&:not(:placeholder-shown):not(:focus)]:border-red-500'
                         />
                         <Validation
-                          message={`Please give us your name`}
+                          message={ `Please give us your name` }
                         />
                       </div>
 
                       <div className='w-full flex flex-col'>
                         <label htmlFor='form-email'>
-                          {" "}
+                          { " " }
                           Email Address
                         </label>
                         <input
@@ -102,7 +101,7 @@ export default function Contact({ layout }) {
                           placeholder=' '
                           required
                           autoComplete='email'
-                          maxLength={80}
+                          maxLength={ 80 }
                           name='email'
                           type='email'
                           className='peer mail invalid:[&:not(:placeholder-shown):not(:focus)]:border-red-500'
@@ -113,7 +112,7 @@ export default function Contact({ layout }) {
 
                       <div className='w-full flex flex-col'>
                         <label htmlFor='form-phone'>
-                          {" "}
+                          { " " }
                           Phone Number
                         </label>
                         <input
@@ -121,7 +120,7 @@ export default function Contact({ layout }) {
                           placeholder=' '
                           required
                           autoComplete='tel'
-                          maxLength={80}
+                          maxLength={ 80 }
                           name='phone'
                           type='tel'
                           className='peer tel invalid:[&:not(:placeholder-shown):not(:focus)]:border-red-500'
@@ -136,7 +135,7 @@ export default function Contact({ layout }) {
                         placeholder=' '
                         required
                         name='message'
-                        rows={5}
+                        rows={ 5 }
                         className='border-b border-dark bg-transparent'
                       />
                     </div>
@@ -147,11 +146,11 @@ export default function Contact({ layout }) {
                       Submit <MoveUpRight />
                     </button>
                   </form>
-                  {formError && <p>{formError}</p>}
+                  { formError && <p>{ formError }</p> }
                 </>
-              )}
+              ) }
             </>
-          )}
+          ) }
         </div>
       </div>
     </div>

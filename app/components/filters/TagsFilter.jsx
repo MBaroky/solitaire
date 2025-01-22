@@ -5,15 +5,24 @@ function TagsFilter({ onFilterChange }) {
   const [tags, setTags] = useState([]);
   const [selectedTags, setSelectedTags] = useState([]);
   const [showPopup, setShowPopup] = useState(false);
-// TODO: revise code (api calls and states and useeffect)
-// TODO: make it open in popup not dropdown
-// TODO: fix layout after so many filters
+  // TODO: revise code (api calls and states and useeffect)
+  // TODO: make it open in popup not dropdown
+  // TODO: fix layout after so many filters
   useEffect(() => {
     // Fetch tags from the API
     const fetchTags = async () => {
       const response = await fetch('/api/properties/tags');
-      const data = await response.json();
-      setTags(data);
+      if (!response.ok) {
+        throw new Error('Failed to fetch tags');
+      }
+      try {
+        const data = await response.json();
+        setTags(data);
+      } catch (error) {
+        console.error(error.message);
+      }
+      // const data = await response.json();
+      // setTags(data);
     };
     fetchTags();
   }, []);
@@ -37,33 +46,33 @@ function TagsFilter({ onFilterChange }) {
 
   return (
     <div className='relative'>
-      <button onClick={() => setShowPopup(!showPopup)}>Tags</button>
-      {showPopup && (
+      <button onClick={ () => setShowPopup(!showPopup) }>Tags</button>
+      { showPopup && (
         <div className='absolute bg-white p-4 shadow-lg'>
           <div>
             <label>
               <input
                 type='checkbox'
-                checked={selectedTags.length === tags.length}
-                onChange={() => handleTagChange('all')}
+                checked={ selectedTags.length === tags.length }
+                onChange={ () => handleTagChange('all') }
               />
               All
             </label>
           </div>
-          {tags.map(tag => (
-            <div key={tag.id}>
+          { tags.map(tag => (
+            <div key={ tag.id }>
               <label>
                 <input
                   type='checkbox'
-                  checked={selectedTags.includes(tag.name)}
-                  onChange={() => handleTagChange(tag.name)}
+                  checked={ selectedTags.includes(tag.name) }
+                  onChange={ () => handleTagChange(tag.name) }
                 />
-                {tag.name}
+                { tag.name }
               </label>
             </div>
-          ))}
+          )) }
         </div>
-      )}
+      ) }
     </div>
   );
 }
