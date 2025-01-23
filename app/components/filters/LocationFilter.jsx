@@ -42,7 +42,7 @@ function LocationFilter({ onFilterChange }) {
           { locationOptions.map((option, index) => (
             <option className='hover:shadow-inner  hover:shadow-dark capitalize' key={ index } value={ option.name }>{ option.name }</option>
           )) }
-        </select> <MapPin />
+        </select> <MapPin size={14} />
       </label>
     </>
   );

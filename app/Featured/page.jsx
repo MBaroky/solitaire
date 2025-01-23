@@ -22,9 +22,6 @@ function Featured() {
             } catch (error) {
                 console.error(error.message);
             }
-            // const initialProps = await response.json();
-            // setPropsList(initialProps.filter(prop => prop.featured === true));
-            // setLoading(false);
         };
         fetchInitialProps();
     }, []);

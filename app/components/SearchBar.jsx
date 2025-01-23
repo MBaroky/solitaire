@@ -59,7 +59,7 @@ function SearchBar({ handler, data }) {
         <label
           className='bg-white border-0 items-center flex flex-row flex-grow gap-3 px-3'
           htmlFor=''>
-          <Search />
+          <Search size={14} />
           <input
             className='bg-transparent border-0 flex-grow outline-none'
             placeholder='Search'

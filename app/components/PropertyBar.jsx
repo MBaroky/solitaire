@@ -1,7 +1,7 @@
 "use client"
 import React, { Suspense, useEffect } from 'react'
 import SearchBar from './SearchBar'
-import Filters from './Filters'
+import Filters from './filters/Filters'
 import { useState } from 'react';
 import SearchBarLocation from './SearchBarLocation';
 
@@ -37,13 +37,12 @@ function PropertyBar({ setPropsList, lease, setLoading }) {
     },[]);
 
     return (
-        <div className="flex gap-3 max-w-container mx-auto w-full pt-5 border-b border-gray-200">
+        <div className="flex flex-wrap gap-3 max-w-container mx-auto w-full pt-5 border-b border-gray-200 !text-xs">
 
             <Suspense>
                 <SearchBar handler={ setPropsList } data={ allProps } />
             </Suspense>
-            {console.log(allProps)}
-            <Filters onFilterChange={handleFilterChange} properties={allProps} setProperties={setPropsList} />
+            <Filters className="flex flex-row flex-grow justify-between" onFilterChange={handleFilterChange} properties={allProps} setProperties={setPropsList} />
         </div>
     )
 }

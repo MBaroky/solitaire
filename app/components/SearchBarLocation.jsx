@@ -68,7 +68,7 @@ function SearchBarLocation({ handler, data }) {
               onClick={ handleClear }
             />
           ) }
-          <MapPinIcon className="text-neutral-400" />
+          <MapPinIcon size={14} className="text-neutral-400" />
         </label>
 
       </div>

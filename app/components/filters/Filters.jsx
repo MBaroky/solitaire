@@ -1,12 +1,12 @@
 "use client"
 import React, { useState } from 'react';
-import PropertyTypeFilter from './filters/PropertyTypeFilter';
-import DeveloperFilter from './filters/DeveloperFilter';
-import PriceFilter from './filters/PriceFilter';
-import BedsBathsFilter from './filters/BedsBathsFilter';
-import SizeFilter from './filters/SizeFilter';
-import LocationFilter from './filters/LocationFilter';
-import TagsFilter from './filters/TagsFilter';
+import PropertyTypeFilter from './PropertyTypeFilter';
+import DeveloperFilter from './DeveloperFilter';
+import PriceFilter from './PriceFilter';
+import BedsBathsFilter from './BedsBathsFilter';
+import SizeFilter from './SizeFilter';
+import LocationFilter from './LocationFilter';
+import TagsFilter from './TagsFilter';
 
 function Filters({ onFilterChange, properties, setProperties }) {
   const [filters, setFilters] = useState({
@@ -51,7 +51,7 @@ function Filters({ onFilterChange, properties, setProperties }) {
       <BedsBathsFilter onFilterChange={handleChange} properties={properties}  />
       <SizeFilter onFilterChange={handleChange} properties={properties} />
       <DeveloperFilter onFilterChange={handleChange} />
-      <TagsFilter onFilterChange={handleTagsChange} />
+      <TagsFilter properties={properties} onFilterChange={handleTagsChange} setProperties={setProperties} />
     </div>
   );
 }

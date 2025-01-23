@@ -44,16 +44,22 @@ function BedsBathsFilter({ onFilterChange, properties }) {
   const componentRef = useRef();
   // close on clicking away
   useEffect(() => {
-    document.addEventListener("click", e => {
-      if (!componentRef.current.contains(e.target)) {
-        setIsOpen(false);
+
+      document.addEventListener("click", e => {
+        if (!componentRef.current.contains(e.target)) {
+          setIsOpen(false);
+        }
+      });
+      return () => {
+        document.removeEventListener("click", () => {
+          setIsOpen(false);
+        });
       }
-    });
   }, []);
   return (
     <div className='relative' ref={componentRef}>
-      <button onClick={toggleMenu} className='bg-white border-0 items-center flex flex-row flex-grow gap-3 px-3 outline-none capitalize py-2'>
-        Beds/Baths <ChevronDown />
+      <button onClick={toggleMenu} className='bg-white border-0 items-center flex flex-row flex-grow gap-3 px-3 outline-none capitalize py-3'>
+        Beds/Baths <ChevronDown size={14} />
       </button>
       {isOpen && (
         <div className='absolute bg-background shadow-lg p-3 mt-2 rounded'>

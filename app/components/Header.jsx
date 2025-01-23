@@ -32,10 +32,15 @@ function Header({ data }) {
   // close menu on clicking away
   useEffect(() => {
     document.addEventListener("click", e => {
-      if (!menuRef.current.contains(e.target)) {
-        setIsOpen(false);
+        if (!menuRef.current.contains(e.target)) {
+          setIsOpen(false);
+        }
+      });
+      return () => {
+        document.removeEventListener("click", () => {
+          setIsOpen(false);
+        });
       }
-    });
   }, []);
   useEffect(() => {
     setLoading(true);

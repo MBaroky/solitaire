@@ -10,6 +10,8 @@ export async function GET(req, res) {
   const bathrooms = url.searchParams.get('bathrooms');
   const size = url.searchParams.get('size');
   const location = url.searchParams.get('location');
+  const tags = url.searchParams.get('tags');
+
 
   const items = await client.query(`\
     select properties::SingleProperty {
@@ -28,20 +30,27 @@ export async function GET(req, res) {
       tags:{name},
       buttons:{text, url},
     } filter (
-      (<str>$propertyType = '' OR .propertyType.name = <str>$propertyType) and
-      (<str>$developer = '' OR .developer.name = <str>$developer) and
-      (<int16>$bedrooms = 0 OR .bedrooms = <int16>$bedrooms) and
-      (<int16>$bathrooms = 0 OR .bathrooms = <int16>$bathrooms) and
-      (<int32>$size = 0 OR .size = <int32>$size) and
+      (<str>$propertyType = '' OR .propertyType.name = <str>$propertyType) AND
+      (<str>$developer = '' OR .developer.name = <str>$developer) AND
+      (<int16>$bedrooms = 0 OR .bedrooms = <int16>$bedrooms) AND
+      (<int16>$bathrooms = 0 OR .bathrooms = <int16>$bathrooms) AND
+      (<int32>$size = 0 OR .size = <int32>$size) AND
       (<str>$location = '' OR .propertyArea.name = <str>$location)
+      AND (
+
+        <str>$tags = '' OR .tags.name = <str>$tags
+      )
     );`, {
     propertyType: propertyType || '',
     developer: developer || '',
     bedrooms: bedrooms ? parseInt(bedrooms) : 0,
     bathrooms: bathrooms ? parseInt(bathrooms) : 0,
     size: size ? parseInt(size) : 0,
-    location: location || ''
+    location: location || '',
+    tags: tags || ''
   });
+
+  // <str>$tags = '' OR .tags.name = <str>$tags
 
   return new Response(JSON.stringify(items), {
     status: 200,
@@ -49,22 +58,3 @@ export async function GET(req, res) {
   });
 }
 
-// export async function GET_SIZES(req, res) {
-//   const sizes = await client.query(`\
-//     select distinct properties::SingleProperty.size;`);
-
-//   return new Response(JSON.stringify(sizes), {
-//     status: 200,
-//     headers: { 'Content-Type': 'application/json' },
-//   });
-// }
-
-// export async function GET_LOCATIONS(req, res) {
-//   const locations = await client.query(`\
-//     select distinct properties::SingleProperty.propertyArea.name;`);
-
-//   return new Response(JSON.stringify(locations), {
-//     status: 200,
-//     headers: { 'Content-Type': 'application/json' },
-//   });
-// }

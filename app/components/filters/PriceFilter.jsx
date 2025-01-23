@@ -23,12 +23,20 @@ function PriceFilter({ onFilterChange, properties, setProperties }) {
   const priceRef = useRef();
   // close on clicking away
   useEffect(() => {
-    document.addEventListener("click", e => {
-      if (!priceRef.current.contains(e.target)) {
-        setIsOpen(false);
+
+      document.addEventListener("click", e => {
+        if (!priceRef.current.contains(e.target)) {
+          setIsOpen(false);
+        }
+        // console.log(priceRef)
+      });
+
+      return () => {
+        document.removeEventListener("click", () => {
+          setIsOpen(false);
+        });
       }
-      // console.log(priceRef)
-    });
+
   }, []);
   const handleMinChange = (e) => {
     setMinPrice(e.target.value);
@@ -46,8 +54,8 @@ function PriceFilter({ onFilterChange, properties, setProperties }) {
 // TODO: format the numbers for better ux
   return (
     <div className='relative' ref={priceRef}>
-      <button onClick={toggleMenu} className='bg-white border-0 items-center flex flex-row flex-grow gap-3 px-3 outline-none capitalize py-2'>
-        Price <ChevronDown />
+      <button onClick={toggleMenu} className='bg-white border-0 items-center flex flex-row flex-grow gap-3 px-3 outline-none capitalize py-3'>
+        Price <ChevronDown size={14} />
       </button>
       {isOpen && (
         <div className='absolute bg-background shadow-lg p-3 mt-2 rounded right-0 left-auto'>
