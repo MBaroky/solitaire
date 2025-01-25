@@ -27,6 +27,28 @@ module properties {
     }
   }
 
+  type Project {
+    required price: int32;
+    required propertyType: PropertyType;
+    # required lease: str{
+    #     constraint one_of ('buy', 'rent');
+    # }
+    required propertyArea: PropertyArea;
+    required developer: developer;
+    required size: int32;
+    excerpt: str;
+    featured: bool;
+    bedrooms: int16;
+    bathrooms: int16;
+    multi tags: tag;
+    multi images: str;
+    multi buttons: button;
+    REQUIRED PROPERTY created_at -> datetime {
+        default := (datetime_current());
+    };
+    REQUIRED date: int16;
+    REQUIRED title: str;
+  }
   type SingleProperty {
     required price: int32;
     required propertyType: PropertyType;

@@ -11,6 +11,7 @@ export default {
         background: "var(--background)",
         foreground: "var(--foreground)",
         dark: "var(--dark-bg)",
+        darkAlpha: "--alpha(var(--dark-bg) / 50%)", // --alpha(var(--color-lime-300) / 50%);
         gold: "var(--gold-bg)",
       },
       fontFamily: {

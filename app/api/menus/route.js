@@ -2,7 +2,7 @@ const menus = {
   mainMenu: [
     { title: "Buy", url: "/Buy" },
     { title: "Rent", url: "/Rent" },
-    { title: "Projects", url: "/" },
+    { title: "Projects", url: "/Projects" },
     { title: "Developers", url: "/" },
     { title: "Areas", url: "/" },
     { title: "Services", url: "/Services" },
