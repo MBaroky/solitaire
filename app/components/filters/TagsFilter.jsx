@@ -2,7 +2,7 @@
 import { ChevronDown, FilterIcon } from 'lucide-react';
 import React, { useState, useEffect } from 'react';
 
-function TagsFilter({ onFilterChange,  setProperties, properties }) {
+function TagsFilter({ onFilterChange,  setProperties, properties, apiSource }) {
   const [tags, setTags] = useState([]);
   const [selectedTags, setSelectedTags] = useState([]);
   const [showPopup, setShowPopup] = useState(false);
@@ -12,7 +12,7 @@ function TagsFilter({ onFilterChange,  setProperties, properties }) {
   useEffect(() => {
     // Fetch tags from the API
     const fetchTags = async () => {
-      const response = await fetch('/api/properties/tags');
+      const response = await fetch(`/api/${apiSource}/tags`);
       if (!response.ok) {
         throw new Error('Failed to fetch tags');
       }

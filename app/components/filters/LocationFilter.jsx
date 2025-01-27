@@ -2,13 +2,13 @@
 import { MapPin } from 'lucide-react';
 import React, { useState, useEffect } from 'react';
 
-function LocationFilter({ onFilterChange }) {
+function LocationFilter({ onFilterChange, apiSource }) {
   const [location, setLocation] = useState('');
   const [locationOptions, setLocationOptions] = useState([]);
 
   useEffect(() => {
     const fetchLocations = async () => {
-      const response = await fetch('/api/properties/locations');
+      const response = await fetch(`/api/${apiSource}/locations`);
       if (!response.ok) {
         throw new Error('Failed to fetch locations');
       }

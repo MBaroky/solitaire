@@ -1,13 +1,13 @@
 "use client"
 import React, { useState, useEffect } from 'react';
 
-function SizeFilter({ onFilterChange }) {
+function SizeFilter({ onFilterChange, apiSource }) {
   const [size, setSize] = useState('');
   const [sizeOptions, setSizeOptions] = useState([]);
 
   useEffect(() => {
     const fetchSizes = async () => {
-      const response = await fetch('/api/properties/sizes');
+      const response = await fetch(`/api/${apiSource}/sizes`);
       if (!response.ok) {
         throw new Error('Failed to fetch sizes');
       }

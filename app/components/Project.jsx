@@ -4,16 +4,16 @@ import React from 'react'
 
 function Project({ data }) {
     return (
-        <div div className='flex flex-col'>
+        <div className='flex flex-col'>
             <div className='relative w-full aspect-video'>
                 <img
-                    className='aspect-video object-cover relative z-10'
+                    className='aspect-video object-cover relative z-[1]'
                     src={ `images/projects/${data?.images[0]}` }
                 />
-                <div className="absolute font-gerbil text-lg text-dark bg-background left-0 bottom-0 z-10 py-2 px-5">
+                <div className="absolute font-gerbil text-lg text-dark bg-background left-0 bottom-0 z-[1] py-2 px-5">
                     AED { data.price}
                 </div>
-                <div className="absolute text-sm text-white bg-neutral-950/50 right-5 top-5 z-10 px-3 leading-6">
+                <div className="absolute text-sm text-white bg-neutral-950/50 right-5 top-5 z-[1] px-3 leading-6">
                     { data.date}
                 </div>
                 <div className='absolute w-full h-full left-0 top-0 bg-slate-200 rounded-md animate-pulse z-0'></div>

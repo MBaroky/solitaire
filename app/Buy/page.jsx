@@ -32,7 +32,7 @@ function Buy() {
 
             {
                 propsList &&
-                <PropertyBar lease="buy" setPropsList={ setPropsList } setLoading={setLoading}  />
+                <PropertyBar lease="buy" setPropsList={ setPropsList } setLoading={setLoading} apiSource={'properties'}  />
 
             }
         { loading ? (

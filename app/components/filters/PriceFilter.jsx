@@ -58,7 +58,7 @@ function PriceFilter({ onFilterChange, properties, setProperties }) {
         Price <ChevronDown size={14} />
       </button>
       {isOpen && (
-        <div className='absolute bg-background shadow-lg p-3 mt-2 rounded right-0 left-auto'>
+        <div className='absolute bg-background shadow-lg p-3 mt-2 rounded right-0 left-auto z-10'>
           <div className='flex flex-row gap-3'>
             <div>
               <label htmlFor="minPrice">Min Price</label>

@@ -62,7 +62,7 @@ function BedsBathsFilter({ onFilterChange, properties }) {
         Beds/Baths <ChevronDown size={14} />
       </button>
       {isOpen && (
-        <div className='absolute bg-background shadow-lg p-3 mt-2 rounded'>
+        <div className='absolute bg-background shadow-lg p-3 mt-2 rounded z-10'>
           <div className='flex flex-row gap-3'>
             <div>
 

@@ -5,7 +5,7 @@ import Filters from './filters/Filters'
 import { useState } from 'react';
 import SearchBarLocation from './SearchBarLocation';
 
-function PropertyBar({ setPropsList, lease, setLoading }) {
+function PropertyBar({ setPropsList, lease, setLoading, apiSource }) {
     const [allProps, setAllProps] = useState([]);
 
     // handleFilterChange is a function that takes in filters and sets the properties list
@@ -14,7 +14,7 @@ function PropertyBar({ setPropsList, lease, setLoading }) {
 
             setLoading(true);
             const queryParams = new URLSearchParams(filters).toString();
-            const path = `/api/properties?${queryParams}`;
+            const path = `/api/${apiSource}?${queryParams}`;
             console.log(path);
 
             const response = await fetch(path);
@@ -23,8 +23,8 @@ function PropertyBar({ setPropsList, lease, setLoading }) {
             }
             try {
                 const data = await response.json();
-                setPropsList(data.filter(prop => prop.lease === lease));
-                setAllProps(data.filter(prop => prop.lease === lease));
+                setPropsList(lease?data.filter(prop => prop.lease === lease): data);
+                setAllProps(lease? data.filter(prop => prop.lease === lease):data);
             }catch (error) {
                 console.error(error.message);
             }
@@ -42,7 +42,7 @@ function PropertyBar({ setPropsList, lease, setLoading }) {
             <Suspense>
                 <SearchBar handler={ setPropsList } data={ allProps } />
             </Suspense>
-            <Filters className="flex flex-row flex-grow justify-between" onFilterChange={handleFilterChange} properties={allProps} setProperties={setPropsList} />
+            <Filters apiSource={apiSource} className="flex flex-row flex-grow justify-between" onFilterChange={handleFilterChange} properties={allProps} setProperties={setPropsList} />
         </div>
     )
 }

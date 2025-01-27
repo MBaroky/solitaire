@@ -30,7 +30,7 @@ function Rent() {
   }, []);
   return (
     <>
-      <PropertyBar lease="rent" setPropsList={ setPropsList } setLoading={ setLoading } />
+      <PropertyBar lease="rent" setPropsList={ setPropsList } setLoading={ setLoading } apiSource={`properties`} />
       { loading ? (
         <div className='py-5' > <Loader /> </div>
       ) : (

@@ -8,7 +8,7 @@ import SizeFilter from './SizeFilter';
 import LocationFilter from './LocationFilter';
 import TagsFilter from './TagsFilter';
 
-function Filters({ onFilterChange, properties, setProperties }) {
+function Filters({ onFilterChange, properties, setProperties, apiSource }) {
   const [filters, setFilters] = useState({
     propertyType: '',
     developer: ''
@@ -45,13 +45,13 @@ function Filters({ onFilterChange, properties, setProperties }) {
 
   return (
     <div className='flex flex-row py-5 items-stretch gap-3'>
-      <LocationFilter onFilterChange={handleChange} />
+      <LocationFilter apiSource={apiSource} onFilterChange={handleChange} />
       <PropertyTypeFilter onFilterChange={handleChange} />
       <PriceFilter onFilterChange={onFilterChange} properties={properties} setProperties={setProperties} />
       <BedsBathsFilter onFilterChange={handleChange} properties={properties}  />
-      <SizeFilter onFilterChange={handleChange} properties={properties} />
+      <SizeFilter apiSource={apiSource} onFilterChange={handleChange} properties={properties} />
       <DeveloperFilter onFilterChange={handleChange} />
-      <TagsFilter properties={properties} onFilterChange={handleTagsChange} setProperties={setProperties} />
+      <TagsFilter apiSource={apiSource} properties={properties} onFilterChange={handleTagsChange} setProperties={setProperties} />
     </div>
   );
 }
