@@ -31,7 +31,7 @@ function SizeFilter({ onFilterChange, apiSource }) {
   };
 
   return (
-    <select name="size" value={ size } onChange={ handleSizeChange } className='bg-white border-0 items-center flex flex-row flex-grow gap-3 px-5 outline-none capitalize'>
+    <select name="size" value={ size } onChange={ handleSizeChange } className='bg-white border-0 items-center flex flex-row outline-none capitalize'>
       <option value="">Size</option>
       { sizeOptions.map((option, index) => (
         <option className='hover:shadow-inner  hover:shadow-dark capitalize' key={ index } value={ option }>{ option } sq ft</option>

@@ -32,7 +32,7 @@ function DeveloperFilter({ onFilterChange }) {
   };
 
   return (
-    <select name="developer" aria-placeholder='Developer' value={developer} onChange={handleChange} className='bg-white border-0 items-center flex flex-row flex-grow gap-3 px-5 outline-none capitalize'>
+    <select name="developer" aria-placeholder='Developer' value={developer} onChange={handleChange} className='bg-white border-0 items-center flex flex-row flex-grow outline-none capitalize'>
       <option value="" className='capitalize'>Developer</option>
       {developers.map((dev) => (
         <option key={dev.id} value={dev.name} className='hover:shadow-inner  hover:shadow-dark capitalize'>{dev.name}</option>

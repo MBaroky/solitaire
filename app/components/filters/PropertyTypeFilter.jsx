@@ -30,7 +30,7 @@ function PropertyTypeFilter({ onFilterChange }) {
   };
 
   return (
-    <select name="propertyType" aria-placeholder='Property Type' value={propertyType} onChange={handleChange} className='bg-white border-0 items-center flex flex-row flex-grow gap-3 px-5 outline-none capitalize'>
+    <select name="propertyType" aria-placeholder='Property Type' value={propertyType} onChange={handleChange} className='bg-white border-0 items-center flex flex-row flex-grow outline-none capitalize'>
       <option value="" className='capitalize'>Property Type</option>
       {propertyTypes.map((type) => (
         <option key={type.id} value={type.name} className='hover:shadow-inner  hover:shadow-dark capitalize'>{type.name}</option>
