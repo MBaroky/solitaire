@@ -2,11 +2,13 @@
 import Developer from '@/components/Developer';
 import Loader from '@/components/Loader';
 import Pagination, { PaginationItem } from '@/components/Pagination';
+import SearchBar from '@/components/SearchBar';
 import useScreenSize from '@/lib/useScreenSize';
-import React, { useEffect, useState } from 'react'
+import React, { Suspense, useEffect, useState } from 'react'
 
 function Developers() {
     const [developers, setDevelopers] = useState([]);
+    const [allDevelopers, setAllDevelopers] = useState([]);
     const [loading, setLoading] = useState();
     const screenSize = useScreenSize();
     useEffect(() => {
@@ -18,6 +20,7 @@ function Developers() {
                 const data = await response.json();
                 if (isMounted) {
                     setDevelopers(data);
+                    setAllDevelopers(data);
                     console.log(data);
                 }
             } catch (error) {
@@ -35,6 +38,14 @@ function Developers() {
     }, [])
   return (
     <div>
+
+                    <div className='w-full max-w-container mx-auto'>
+
+        <Suspense>
+          <SearchBar handler={setDevelopers} data={allDevelopers} />
+        </Suspense>
+        <hr />
+                    </div>
             { loading ? (<div className='py-5' > <Loader /> </div>) : (
 
 
