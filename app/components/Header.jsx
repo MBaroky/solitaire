@@ -101,7 +101,7 @@ function Header({ data }) {
             ) }
             <hr className='mx-8 my-3 bg-slate-400 border-gold  h-[0.5px]' />
             <li className={ menuItemStyles }>
-              <Link className='w-full block' href={ `/` }>
+              <Link className='w-full block' href={ `/Login` }>
                 Log in
               </Link>
             </li>
