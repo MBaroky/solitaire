@@ -8,7 +8,9 @@ module properties {
     required name: str{
         constraint exclusive;
     }
-    image: str;
+    image: str{
+      default := 'default.webp';
+    }
   }
   type developer {
     required name: str{

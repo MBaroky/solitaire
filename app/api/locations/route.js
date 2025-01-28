@@ -6,7 +6,8 @@ const client = createClient();
 export async function GET(req, res) {
   const locations = await client.query(`\
     SELECT properties::PropertyArea {
-    name
+      name,
+      image
     };`);
 
   return new Response(JSON.stringify(locations), {

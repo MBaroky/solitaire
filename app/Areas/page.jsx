@@ -1,6 +1,5 @@
 "use client"
 import Area from '@/components/Area';
-import Developer from '@/components/Developer';
 import Loader from '@/components/Loader';
 import Pagination, { PaginationItem } from '@/components/Pagination';
 import SearchBar from '@/components/SearchBar';
@@ -20,9 +19,8 @@ function Areas() {
                 const response = await fetch('/api/locations');
                 const data = await response.json();
                 if (isMounted) {
-                    setAreas(data);
-                    setAllAreas(data);
-                    console.log(data);
+                    setAreas(data.filter(area => area.image != 'default.webp'));
+                    setAllAreas(data.filter(area => area.image != 'default.webp'));
                 }
             } catch (error) {
                 if (isMounted) {
@@ -61,7 +59,7 @@ function Areas() {
                                             ? 1
                                             : screenSize.width < 767
                                                 ? 2
-                                                : 6
+                                                : 9
                                     }>
                                     { areas?.map((area) => {
                                         return (
