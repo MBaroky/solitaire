@@ -89,7 +89,7 @@ module.exports = async function seedProperties() {
     `Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut, nulla ea. Dolores molestiae praesentium enim, ad veritatis minima officiis, voluptatibus, nobis magnam minus saepe ullam quam? Et atque vitae repellendus.`,
     "Sheikh zayed st. Abu Dhabi",
     '20000',
-    "sodic ",
+    "damac ",
     true,
     '6',
     '2',

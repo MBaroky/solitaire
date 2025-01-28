@@ -1,24 +1,23 @@
 "use client"
+import Developer from '@/components/Developer';
 import Loader from '@/components/Loader';
 import Pagination, { PaginationItem } from '@/components/Pagination';
-import Project from '@/components/Project';
-import PropertyBar from '@/components/PropertyBar';
 import useScreenSize from '@/lib/useScreenSize';
 import React, { useEffect, useState } from 'react'
 
-function Projects() {
-    const [projects, setProjects] = useState([]);
+function Developers() {
+    const [developers, setDevelopers] = useState([]);
     const [loading, setLoading] = useState();
     const screenSize = useScreenSize();
     useEffect(() => {
         let isMounted = true;
         setLoading(true);
-        const fetchProjects = async () => {
+        const fetchMethod = async () => {
             try {
-                const response = await fetch('/api/projects');
+                const response = await fetch('/api/developers');
                 const data = await response.json();
                 if (isMounted) {
-                    setProjects(data.sort((a, b) => new Date(b.date) - new Date(a.date)));
+                    setDevelopers(data);
                     console.log(data);
                 }
             } catch (error) {
@@ -28,26 +27,21 @@ function Projects() {
             }
         };
 
-        fetchProjects();
+        fetchMethod();
         setLoading(false);
         return () => {
             isMounted = false;
         };
     }, [])
-    return (
-        <div>
-            {
-                projects &&
-                <PropertyBar lease="" setPropsList={ setProjects } setLoading={ setLoading } apiSource={ 'projects' } />
-
-            }
+  return (
+    <div>
             { loading ? (<div className='py-5' > <Loader /> </div>) : (
 
 
                 <div className='w-full bg-background'>
                     <div className='w-full max-w-container mx-auto'>
                         <div className='grid grid-cols-1 gap-5 my-5'>
-                            { projects?.length > 0 ? (
+                            { developers?.length > 0 ? (
                                 <Pagination
                                     className={ `grid md:grid-cols-3 grid-cols-1 sm:grid-cols-2 gap-5 my-5` }
                                     perPage={
@@ -57,22 +51,22 @@ function Projects() {
                                                 ? 2
                                                 : 6
                                     }>
-                                    { projects?.map((project) => {
+                                    { developers?.map((developer) => {
                                         return (
-                                            <PaginationItem key={ project.id }>
-                                                <Project data={ project } />
+                                            <PaginationItem key={ developer.id }>
+                                                <Developer data={ developer } />
                                             </PaginationItem>
                                         );
                                     }) }
 
                                 </Pagination>
-                            ) : <div className="text-xl text-center py-5">No projects found</div> }
+                            ) : <div className="text-xl text-center py-5">No Developers found</div> }
                         </div>
                     </div>
                 </div>
             ) }
-        </div>
-    )
+    </div>
+  )
 }
 
-export default Projects
+export default Developers

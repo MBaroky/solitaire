@@ -3,7 +3,7 @@ const menus = {
     { title: "Buy", url: "/Buy" },
     { title: "Rent", url: "/Rent" },
     { title: "Projects", url: "/Projects" },
-    { title: "Developers", url: "/" },
+    { title: "Developers", url: "/Developers" },
     { title: "Areas", url: "/" },
     { title: "Services", url: "/Services" },
     { title: "Blogs", url: "/Blog" },

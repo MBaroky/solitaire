@@ -11,7 +11,7 @@ module.exports = async function seedProjects() {
     `Nakheel Properties presents a new phase at Palm Jebel Ali, offering luxurious villa...`, //excerpt
     "Palm Jumeirah, Dubai", //area
     '15,000', //size
-    "sodic ", //developer
+    "damac", //developer
     true, //featured
     '6', //bedrooms
     '5', //bathrooms
@@ -27,7 +27,7 @@ module.exports = async function seedProjects() {
     `Bluewater Bay offers an unparalleled waterfront lifestyle, blending modern...`, //excerpt
     "Bluewater Bay, Dubai", //area
     '12,000', //size
-    "sodic ", //developer
+    "damac", //developer
     true, //featured
     '5', //bedrooms
     '4', //bathrooms
@@ -43,7 +43,7 @@ module.exports = async function seedProjects() {
     `Emirates Hills unveils the Skyline Villas, where luxury meets exclusivity. Each...`, //excerpt
     "Emirates Hills, Dubai", //area
     '20,000', //size
-    "sodic ", //developer
+    "Meraas", //developer
     true, //featured
     '6', //bedrooms
     '5', //bathrooms
@@ -59,7 +59,7 @@ module.exports = async function seedProjects() {
     `The Sunset Villas provide a family-friendly community atmosphere within...`, //excerpt
     "Arabian Ranches III, Dubai", //area
     '10,000', //size
-    "sodic ", //developer
+    "Meraas", //developer
     true, //featured
     '4', //bedrooms
     '3', //bathrooms
@@ -75,7 +75,7 @@ module.exports = async function seedProjects() {
     `Garden Estates offers a blend of luxury and nature, nestled within the lush...`, //excerpt
     "Jumeirah Golf Estates, Dubai", //area
     '15,000', //size
-    "sodic ", //developer
+    "Azizi Developments", //developer
     true, //featured
     '6', //bedrooms
     '5', //bathrooms
@@ -91,7 +91,7 @@ module.exports = async function seedProjects() {
     `Dubai Marina’s Marina Towers bring contemporary urban living to the heart...`, //excerpt
     "Dubai Marina, Dubai", //area
     '8,000', //size
-    "sodic ", //developer
+    "Azizi Developments", //developer
     true, //featured
     '5', //bedrooms
     '4', //bathrooms

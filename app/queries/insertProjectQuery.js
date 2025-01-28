@@ -5,10 +5,10 @@ INSERT properties::Project{
     propertyType := (
       WITH existing_type := (
         SELECT properties::PropertyType
-        FILTER properties::PropertyType.name = '${type.toLowerCase()}'
+        FILTER properties::PropertyType.name = '${type.trim().toLowerCase()}'
       )
       SELECT (
-        INSERT properties::PropertyType {name := '${type.toLowerCase()}'}
+        INSERT properties::PropertyType {name := '${type.trim().toLowerCase()}'}
         UNLESS CONFLICT ON .name
         ELSE (SELECT existing_type)
       )
@@ -18,10 +18,10 @@ INSERT properties::Project{
     propertyArea := (
       WITH existing_area := (
         SELECT properties::PropertyArea
-        FILTER properties::PropertyArea.name = '${area.toLowerCase()}'
+        FILTER properties::PropertyArea.name = '${area.trim().toLowerCase()}'
       )
       SELECT (
-        INSERT properties::PropertyArea {name := '${area.toLowerCase()}'}
+        INSERT properties::PropertyArea {name := '${area.trim().toLowerCase()}'}
         UNLESS CONFLICT ON .name
         ELSE (SELECT existing_area)
       )
@@ -29,10 +29,10 @@ INSERT properties::Project{
     developer := (
       WITH existing_dev := (
         SELECT properties::developer
-        FILTER properties::developer.name = '${developer.toLowerCase()}'
+        FILTER properties::developer.name = '${developer.trim().toLowerCase()}'
       )
       SELECT (
-        INSERT properties::developer { name := '${developer.toLowerCase()}'}
+        INSERT properties::developer { name := '${developer.trim().toLowerCase()}'}
         UNLESS CONFLICT ON .name
         ELSE (SELECT existing_dev)
       )
@@ -50,7 +50,7 @@ INSERT properties::Project{
     date:= ${parseInt(date)},
 
     tags := (
-      FOR tag IN (DISTINCT {${tags.map(tag => `'${tag.toLowerCase()}'`).join(', ')}})
+      FOR tag IN (DISTINCT {${tags.map(tag => `'${tag.trim().toLowerCase()}'`).join(', ')}})
       UNION (
         WITH existing_tag := (
           SELECT properties::tag

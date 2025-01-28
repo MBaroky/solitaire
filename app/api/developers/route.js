@@ -7,7 +7,10 @@ export async function GET(req, res) {
   const developers = await client.query(`\
     select properties::developer {
       id,
-      name
+      name,
+      image,
+      logo,
+      excerpt
     };`);
 
   return new Response(JSON.stringify(developers), {

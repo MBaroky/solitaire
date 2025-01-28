@@ -16,6 +16,7 @@ module properties {
     }
     image: str;
     logo: str;
+    excerpt: str;
   }
   type button {
     text:str;
