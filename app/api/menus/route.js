@@ -4,7 +4,7 @@ const menus = {
     { title: "Rent", url: "/Rent" },
     { title: "Projects", url: "/Projects" },
     { title: "Developers", url: "/Developers" },
-    { title: "Areas", url: "/" },
+    { title: "Areas", url: "/Areas" },
     { title: "Services", url: "/Services" },
     { title: "Blogs", url: "/Blog" },
     {
