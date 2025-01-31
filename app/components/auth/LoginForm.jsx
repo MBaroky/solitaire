@@ -2,18 +2,20 @@
 import { useState } from 'react';
 import Validation from '../Validation';
 import { MoveUpRight } from 'lucide-react';
+import Loader from '../Loader';
 
 const LoginForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
+  const [loading, setLoading] = useState('');
 
   const handleLogin = async (e) => {
     e.preventDefault();
     setError('');
     setSuccess('');
-
+    setLoading(true);
     try {
       const response = await fetch('/api/auth/login', {
         method: 'POST',
@@ -22,22 +24,27 @@ const LoginForm = () => {
       });
 
       if (response.ok) {
-        setSuccess('Login successful');
+        setSuccess('Login successful redirecting...');
         setEmail('');
         setPassword('');
         // Redirect or update state
         window.location.href = '/Account';
       } else {
         const data = await response.json();
-        setError(data.message);
+        console.log(data);
+        setError(data.error);
       }
     } catch (error) {
       setError('An error occurred. Please try again.');
     }
+    setLoading(false);
   };
 
   return (
     <form onSubmit={handleLogin} className='group mt-8 pt-8 mb-2 w-full relative' noValidate>
+      {loading && <div className='flex items-center justify-center w-full absolute left-0 top-0'>
+          <Loader />
+        </div>}
       {error && <p className="absolute left-0 top-0 text-red-800">{error}</p>}
       {success && <p  className="absolute left-0 top-0 text-green-800">{success}</p>}
       <div className='mb-4 flex flex-col w-full [&_input]:bg-transparent [&_input]:border-b [&_input]:border-dark [&_input]:mb-3 text-dark'>

@@ -4,6 +4,8 @@ module default {
       constraint exclusive;
     }
     required property password_hash -> str;
+    required property name -> str;
+    required property phone -> str;
   }
 
   type Session {

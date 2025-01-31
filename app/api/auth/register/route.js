@@ -5,7 +5,7 @@ import bcrypt from 'bcrypt';
 const client = createClient();
 
 export async function POST(req) {
-  const { email, password } = await req.json();
+  const { email, password, name, phone } = await req.json();
 
   if (!email || !password) {
     return NextResponse.json({ message: 'Email and password are required' }, { status: 400 });
@@ -31,10 +31,12 @@ export async function POST(req) {
     const query = `
       INSERT User {
         email := <str>$email,
-        password_hash := <str>$password_hash
+        password_hash := <str>$password_hash,
+        name := <str>$name,
+        phone := <str>$phone,
       }
     `;
-    await client.query(query, { email, password_hash: passwordHash });
+    await client.query(query, { email, name, phone, password_hash: passwordHash });
 
     return NextResponse.json({ message: 'User registered successfully' }, { status: 201 });
   } catch (error) {
