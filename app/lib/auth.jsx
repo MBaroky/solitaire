@@ -1,41 +1,57 @@
-import { parse } from 'cookie';
+// import { parse, serialize } from 'cookie';
 
-export function getSessionToken(cookieString) {
-  const cookies = parse(cookieString || '');
-  return cookies.session_token;
-}
+// export function getSessionToken(cookieString) {
+//   const cookies = parse(cookieString || '');
+//   console.log('cookies:', cookies);
+//   return cookies.session_token;
+// }
 
-export function requireAuth(handler) {
-  return async (req, res) => {
-    const sessionToken = getSessionToken(req.headers?.cookie);
+// export function setSessionToken(response, sessionToken) {
+//   const cookie = serialize('session_token', sessionToken, {
+//     httpOnly: true,
+//     secure: process.env.NODE_ENV === 'production',
+//     sameSite: 'strict',
+//     maxAge: 60 * 60 * 24 * 7, // 1 week
+//     path: '/',
+//   });
+//   // response.headers.set('Set-Cookie', cookie);
+//   localStorage.setItem('cookie', cookie);
+// }
 
-    if (!sessionToken) {
-      return {
-        redirect: {
-          destination: '/Login',
-          permanent: false,
-        },
-      };
-    }
+// export function requireAuth(handler) {
+//   return async (req, res) => {
+//     const sessionToken = getSessionToken(req.headers?.cookie);
+//     console.log('sessionToken:', sessionToken);
 
-    const response = await fetch('/api/auth/validate', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ sessionToken }),
-    });
+//     if (!sessionToken) {
+//       console.log(req.headers)
+//       // return {
+//       //   redirect: {
+//       //     destination: '/Login',
+//       //     permanent: false,
+//       //   },
+//       // };
+//     }
 
-    if (!response.ok) {
-      return {
-        redirect: {
-          destination: '/Login',
-          permanent: false,
-        },
-      };
-    }
+//     const response = await fetch('/api/auth/validate', {
+//       method: 'POST',
+//       headers: { 'Content-Type': 'application/json' },
+//       body: JSON.stringify({ sessionToken }),
+//     });
 
-    const data = await response.json();
-    req.user = data.user;
+//     if (!response.ok) {
+//       console.error('Session validation failed:', response.statusText);
+//       // return {
+//       //   redirect: {
+//       //     destination: '/Login',
+//       //     permanent: false,
+//       //   },
+//       // };
+//     }
 
-    return handler(req, res);
-  };
-}
+//     const data = await response.json();
+//     req.user = data.user;
+
+//     return handler(req, res);
+//   };
+// }

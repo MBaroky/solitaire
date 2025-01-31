@@ -1,65 +1,47 @@
 // pages/api/login.js
-import { NextResponse } from 'next/server';
 import { createClient } from 'edgedb';
 import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
 import { serialize } from 'cookie';
-import { v4 as uuidv4 } from 'uuid';
+import { NextResponse } from 'next/server';
 
 const client = createClient();
+const jwtSecret = process.env.JWT_SECRET;
 
 export async function POST(req) {
-  const { email, password } = await req.json();
+    if (req.method === 'POST') {
+        const { email, password } = await req.json();
 
-  if (!email || !password) {
-    return NextResponse.json({ message: 'Email and password are required' }, { status: 400 });
-  }
-
-  try {
-    // Fetch the user from EdgeDB
-    const query = `
+        const user = await client.querySingle(`
       SELECT User {
         id,
         email,
         password_hash
       }
       FILTER .email = <str>$email
-    `;
-    const user = await client.querySingle(query, { email });
+        `, { email });
 
-    if (!user) {
-      return NextResponse.json({ message: 'Invalid email or password. <a href="/register">Register here</a>' }, { status: 401 });
+        if (user && bcrypt.compareSync(password, user.password_hash)) {
+            const token = jwt.sign({ userId: user.id }, jwtSecret, { expiresIn: '1h' });
+
+            const response = NextResponse.json({ success: true });
+            response.headers.set('Set-Cookie', serialize('token', token, {
+                httpOnly: false,
+                secure: process.env.NODE_ENV !== 'development',
+                maxAge: 60 * 60,
+                path: '/',
+            }));
+            await client.execute(`
+              INSERT Session {
+                token := <str>$sessionToken,
+                user := (SELECT User FILTER .id = <uuid>$userId)
+              }
+            `, { sessionToken: token, userId: user.id });
+            return response;
+        } else {
+            return NextResponse.json({ error: 'Invalid email or password' }, { status: 401 });
+        }
+    } else {
+        return NextResponse.json({ error: 'Method not allowed' }, { status: 405 });
     }
-
-    // Compare the password hash
-    const isPasswordValid = await bcrypt.compare(password, user.password_hash);
-
-    if (!isPasswordValid) {
-      return NextResponse.json({ message: 'Invalid email or password' }, { status: 401 });
-    }
-
-    // Create a session token and store it in the database
-    const sessionToken = uuidv4(); // Generate a real session token
-    await client.execute(`
-      INSERT Session {
-        token := <str>$sessionToken,
-        user := (SELECT User FILTER .id = <uuid>$userId)
-      }
-    `, { sessionToken, userId: user.id });
-
-    // Set the session token as a cookie
-    const cookie = serialize('session_token', sessionToken, {
-      httpOnly: true,
-      secure: process.env.NODE_ENV === 'production',
-      sameSite: 'strict',
-      maxAge: 60 * 60 * 24 * 7, // 1 week
-      path: '/',
-    });
-
-    const response = NextResponse.json({ message: 'Login successful' });
-    response.headers.set('Set-Cookie', cookie);
-    return response;
-  } catch (error) {
-    console.error('Login error:', error);
-    return NextResponse.json({ message: 'Internal server error' }, { status: 500 });
-  }
 }
