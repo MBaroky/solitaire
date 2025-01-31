@@ -11,12 +11,9 @@ const Account = () => {
         const cookies = parse(document.cookie || '');
         const token = cookies.token;
 
-        console.log('Document Cookies:', document.cookie);
         if (token) {
-            console.log('Token:', token);
             setAuth(true);
         } else {
-            console.log('No token found', cookies);
             setAuth(false);
         }
     }, []);
