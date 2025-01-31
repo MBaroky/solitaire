@@ -2,6 +2,7 @@ import LoginForm from '@/components/auth/LoginForm'
 import sectionBg from '@/assets/images/login-bg.jpeg'
 import React from 'react'
 import Link from 'next/link'
+import LoginIcons from '@/components/auth/LoginIcons'
 
 function Login() {
   return (
@@ -15,7 +16,7 @@ function Login() {
           <Link href='/Register' className='weight-bold text-primary ml-2 inline-block underline'>
           Sign Up</Link></p>
         <LoginForm />
-        {/* TODO: add login with social network component */}
+        <LoginIcons />
       </div>
     </div>
   )

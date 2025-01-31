@@ -2,6 +2,7 @@ import RegisterForm from '@/components/auth/RegisterForm'
 import React from 'react'
 import sectionBg from '@/assets/images/login-bg.jpeg'
 import Link from 'next/link'
+import LoginIcons from '@/components/auth/LoginIcons'
 
 function Register() {
   return (<div className='flex flex-col md:flex-row justify-stretch'>
@@ -14,7 +15,7 @@ function Register() {
         <Link href='/Login' className='weight-bold text-primary ml-2 inline-block underline'>
         Log in</Link></p>
     <RegisterForm />
-    {/* TODO: add login with social network component */}
+    <LoginIcons />
     </div>
   </div>
   )
