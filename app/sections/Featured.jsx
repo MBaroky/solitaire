@@ -12,21 +12,30 @@ import "swiper/css/navigation";
 
 import CustomButton from "@/components/CustomButton";
 import { ArrowLeft, ArrowRight } from "lucide-react";
+import Loader from "@/components/Loader";
 
 function Featured() {
   const [propsList, setPropsList] = useState([]);
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
+    setLoading(true);
     fetch("api/properties")
       .then(res => res.json())
       .then(data => {
         setPropsList(data.filter(prop => prop.featured === true));
       });
+      setLoading(false);
   }, []);
   const onSlideChange = swiper => {
     // console.log("slide change", swiper.activeIndex);
   }
-  // TODO: Add a loading state
   return (
+    <>
+    {loading ? <div className='flex items-center justify-center w-full absolute left-0 top-0'>
+      <Loader />
+    </div>
+    :
+
     <div
       className='w-full bg-dark pt-20 bg-top bg-contain bg-no-repeat'
       id='Featured'
@@ -89,6 +98,8 @@ function Featured() {
         </div>
       </div>
     </div>
+    }
+    </>
   );
 }
 

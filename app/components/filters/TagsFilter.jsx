@@ -6,9 +6,6 @@ function TagsFilter({ onFilterChange,  setProperties, properties, apiSource }) {
   const [tags, setTags] = useState([]);
   const [selectedTags, setSelectedTags] = useState([]);
   const [showPopup, setShowPopup] = useState(false);
-  // TODO: revise code (api calls and states and useeffect)
-
-  // TODO: fix layout after so many filters
   useEffect(() => {
     // Fetch tags from the API
     const fetchTags = async () => {
