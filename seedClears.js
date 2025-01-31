@@ -21,6 +21,8 @@ module.exports =  async function clearData() {
     await client.execute(clearDatabaseQuery2);
     await client.execute(clearDatabaseQuery3);
     await client.execute(clearDatabaseQuery4);
+    await client.execute( 'DELETE Session;');
+    await client.execute( 'DELETE User;');
     console.log('Database cleared.');
 
   } catch (err) {
