@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import Validation from '../Validation';
 import { MoveUpRight } from 'lucide-react';
+import Loader from '../Loader';
 function RegisterForm() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
