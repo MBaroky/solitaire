@@ -18,7 +18,27 @@ const Account = () => {
         }
     }, []);
 
-    return auth ? <h1>Welcome to your Account</h1> : <h1>Please log in</h1>;
+    const handleLogout = async () => {
+        const response = await fetch('/api/auth/logout', {
+            method: 'POST',
+        });
+
+        if (response.ok) {
+            setAuth(false);
+            router.push('/Login');
+        } else {
+            console.error('Failed to log out');
+        }
+    };
+
+    return auth ? (
+        <div>
+            <h1>Welcome to your Account</h1>
+            <button onClick={handleLogout}>Log out</button>
+        </div>
+    ) : (
+        <h1>Please log in</h1>
+    );
 };
 
 export default Account;

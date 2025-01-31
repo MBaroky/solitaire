@@ -1,15 +1,17 @@
 // pages/api/logout.js
 import { serialize } from 'cookie';
+import { NextResponse } from 'next/server';
 
-export default async function handler(req, res) {
+export async function POST(req) {
   if (req.method !== 'POST') {
-    return res.status(405).json({ message: 'Method not allowed' });
+    return NextResponse.json({ message: 'Method not allowed' }, { status: 405 });
   }
 
   // Clear the session cookie
-  res.setHeader(
+  const response = NextResponse.json({ message: 'Logout successful' });
+  response.headers.set(
     'Set-Cookie',
-    serialize('session_token', '', {
+    serialize('token', '', {
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production',
       sameSite: 'strict',
@@ -18,5 +20,5 @@ export default async function handler(req, res) {
     })
   );
 
-  res.status(200).json({ message: 'Logout successful' });
+  return response;
 }

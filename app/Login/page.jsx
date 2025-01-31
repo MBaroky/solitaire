@@ -15,6 +15,7 @@ function Login() {
           <Link href='/Register' className='weight-bold text-primary ml-2 inline-block underline'>
           Sign Up</Link></p>
         <LoginForm />
+        {/* TODO: add login with social network component */}
       </div>
     </div>
   )

@@ -14,6 +14,7 @@ function Register() {
         <Link href='/Login' className='weight-bold text-primary ml-2 inline-block underline'>
         Log in</Link></p>
     <RegisterForm />
+    {/* TODO: add login with social network component */}
     </div>
   </div>
   )
